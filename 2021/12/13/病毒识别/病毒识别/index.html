@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>病毒识别 | AMY&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="病毒识别1..exe文件定义　　a)、 EXE File可执行程序，一种可在操作系统存储空间中浮动定位的可执行程序。MS-DOS和MS-WINDOWS下，此类文件扩展名为exe。　　b)、 WINDOWS操作系统中的二进制可执行文件，可执行文件分两种一种是后缀名为.COM另一种就是.EXE了。.COM一般用于DOS，在WINDOWS系统中的执行文件一般都是.EXE文件在MS-DOS中，用以标识可执">
+<meta property="og:type" content="article">
+<meta property="og:title" content="病毒识别">
+<meta property="og:url" content="https://amy-ccc098.github.io/2021/12/13/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/index.html">
+<meta property="og:site_name" content="AMY&#39;s BLOG">
+<meta property="og:description" content="病毒识别1..exe文件定义　　a)、 EXE File可执行程序，一种可在操作系统存储空间中浮动定位的可执行程序。MS-DOS和MS-WINDOWS下，此类文件扩展名为exe。　　b)、 WINDOWS操作系统中的二进制可执行文件，可执行文件分两种一种是后缀名为.COM另一种就是.EXE了。.COM一般用于DOS，在WINDOWS系统中的执行文件一般都是.EXE文件在MS-DOS中，用以标识可执">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-12-13T08:06:15.000Z">
+<meta property="article:modified_time" content="2021-12-13T08:07:26.531Z">
+<meta property="article:author" content="CAIMI">
+<meta property="article:tag" content="safety study">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="AMY&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">AMY&#39;s BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Amy-CCC098.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-病毒识别/病毒识别" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/13/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/" class="article-date">
+  <time datetime="2021-12-13T08:06:15.000Z" itemprop="datePublished">2021-12-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      病毒识别
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+        <h1 id="病毒识别"><a href="#病毒识别" class="headerlink" title="病毒识别"></a>病毒识别</h1><p><strong>1..exe文件定义</strong><br>　　a)、 EXE File可执行程序，一种可在操作系统存储空间中浮动定位的可执行程序。MS-DOS和MS-WINDOWS下，此类文件扩展名为exe。<br>　　b)、 WINDOWS操作系统中的二进制可执行文件，可执行文件分两种一种是后缀名为.COM另一种就是.EXE了。.COM一般用于DOS，在WINDOWS系统中的执行文件一般都是.EXE文件在MS-DOS中，用以标识可执行文件的扩展。</p>
+<p><strong>2..exe文件结构</strong><br>　　EXE文件比较复杂，每个EXE文件都有一个文件头，结构如下：<br>　　EXE文件头信息：<br>　　　　―――――――――――――――――――<br>　　　　├ 偏移量 ┤　意义　┤<br>　　　　├00h-01h ┤MZ’EXE文件标记　┤<br>　　　　├2h-03h　┤文件长度除512的余数　┤<br>　　　　├04h-05h ┤……………商　┤<br>　　　　├06h-07h ┤重定位项的个数　┤<br>　　　　├08h-09h ┤文件头除16的商　┤<br>　　　　├0ah-0bh ┤程序运行所需最小段数 ┤<br>　　　　├0ch-0dh ┤…………..大…. ┤<br>　　　　├oeh-0fh ┤堆栈段的段值 (SS)　┤<br>　　　　├10h-11h ┤……..sp　┤<br>　　　　├12h-13h ┤文件校验和　┤<br>　　　　├14h-15h ┤IP　┤<br>　　　　├16h-17h ┤CS　┤<br>　　　　├18h-19h ┤…………　┤<br>　　　　├1ah-1bh ┤…………　┤<br>　　 ├1ch　┤…………　┤　<br>　　EXE文件包含一个文件头和一个可重定位程序映象。文件头包含MS-DOS用于加载程序的信息，例如程序的大小和寄存器的初始值。文件头还指向一个重定位表，该表包含指向程序映象中可重定位段地址的指针链表。</p>
+<p><strong>3..TXT文件定义</strong><br>　　TXT是微软在操作系统上附带的一种文本格式，是最常见的一种文件格式 ，早在DOS时代应用就很多，主要存文本信息，即为文字信息，在微软在操作系统等于直接存，就是它了，现在多用的操作系统得使用记事本等程序保存，大多数软件可以查看，记事本，浏览器等等。</p>
+<p><strong>4..TXT文件优缺点</strong><br>　　txt格式的优势：<br>　　 　　a)：体积小、存储简单方便<br>　　 　　b)：txt格式比较简单，不会中毒<br>　　 　　c)：txt格式是电脑和很多移动设备的通用格式<br>　　txt格式的缺点:<br>　　 　　a)：用记事本阅读,不支持标签记录,不可以标记书签.<br>　　 　　b)：只能支持纯文字,不支持图像,不够生动.</p>
+<p><strong>5.DOS文件结构</strong><br>　　DOS是英文Disk Operating System的缩写，意思是“磁盘操作系统”。DOS是个人计算机上的一类操作系统。<br>　　DOS 是一个单用户、单任务的操作系统， 采用的是命令行方式下的字符操作。 　　在如今的电脑行业也有另外一种说法，就是无视窗操作系统的意思。</p>
+<p><strong>6.DOS文件解释</strong><br>　　DOS是一种面向磁盘的操作系统软件，简言之，DOS就是人与机器的一座桥梁，是设在机器硬件里面的一套人机交互系统，简单理解就是，有了DOS，我们就不必去深入了解机器的硬件结构，也不必去死记硬背那些枯燥的机器命令。</p>
+<p><strong>7.DOS文件作用</strong><br>　　我们只需通过一些接近于自然语言的DOS命令，就可以轻松地完成绝大多数的日常操作。另外，DOS还能有效地管理各种软硬件资源，对它们进行合理的调度，所有的软件和硬件都在DOS的监控和管理之下，有条不紊地进行着自己的工作。<br>　　目前的Windows系列操作系统的底层系统即为DOS。DOS一般都是在操作系统的基础上运行的。</p>
+<p>对于一个不可以在DOS下运行的文件，可以直接将后缀名改为.exe或者在命令行中将文件拖入并回车。</p>
+<hr>
+<h2 id="病毒防范"><a href="#病毒防范" class="headerlink" title="病毒防范"></a>病毒防范</h2><p>挽救带毒文档</p>
+<p>实验原理</p>
+<p><strong>1.基于文件头的文件类型验证类</strong><br>　　‘dw4’ =&gt; ‘4F7B’,<br>　　‘pgm’ =&gt; ‘50350A’,<br>　　‘pax’ =&gt; ‘504158’,<br>　　‘pgd’ =&gt; ‘504750644D41494E’,<br>　　‘img’ =&gt; ‘EB3C902A’,<br>　　‘zip’ =&gt; ‘504B0304140000’,<br>　　‘docx’ =&gt; ‘504B030414000600’(word2007),=&gt;’D0CF11E0A1B11AE10000000000000000’(word2003)<br>　　‘pptx’ =&gt; ‘504B030414000600’,<br>　　‘xlsx’ =&gt; ‘504B030414000600’,<br>　　‘kwd’ =&gt; ‘504B0304’,<br>　　‘odt’ =&gt; ‘504B0304’,<br>　　‘odp’ =&gt; ‘504B0304’,<br>　　‘ott’ =&gt; ‘504B0304’,<br>　　‘sxc’ =&gt; ‘504B0304’,<br>　　‘sxd’ =&gt; ‘504B0304’,<br>　　‘sxi’ =&gt; ‘504B0304’,<br>　　‘sxw’ =&gt; ‘504B0304’,<br>　　‘wmz’ =&gt; ‘504B0304’,<br>　　‘xpi’ =&gt; ‘504B0304’,<br>　　‘xps’ =&gt; ‘504B0304’,<br>　　‘xpt’ =&gt; ‘5850434F4D0A5479’,<br>　　‘grp’ =&gt; ‘504D4343’,<br>　　‘qemu’ =&gt; ‘514649’,</p>
+<p><strong>2.UltraEdit定义</strong><br>　　UltraEdit 是一套功能强大的文本编辑器，可以编辑文本、十六进制、ASCII 码，完全可以取代记事本(如果电脑配置足够强大)，内建英文单字检查、C++ 及 VB 指令突显，可同时编辑多个文件，而且即使开启很大的文件速度也不会慢。软件附有 HTML 标签颜色显示、搜寻替换以及无限制的还原功能，一般用其来修改EXE 或 DLL 文件。能够满足你一切编辑需要的编辑器。</p>
+<p><strong>3.UltraEdit的用途</strong><br>　　用做普通文本文件编辑器(.txt .bat .conf .ini等）<br>　　用做.bat文件编辑器 (bat，是指批量处理文件）<br>　　用做c, c++, java, jsp, html, xml等的源代码编辑器<br>　　(以上文件可以是本地的，也可以是通过FTP方式操作远程的文件) 对文本文件进行按行排序，排序的方式是可以定义的。<br>　　对16进制的文件直接修改字节指定直接的内容。<br>　　对文件全体内容或选定内容进行整体的操作，比如转换格式、内容等。<br>　　对文件的字符、词数量进行统计。<br>　　对一个文本文件或源代码文件组成的项目进行操作。</p>
+<p><strong>挽救带毒文档实验步骤：</strong></p>
+<ol>
+<li>打开带毒文件，发现是一堆乱码，查询文件所对应的文件头。</li>
+<li>用UltraEdit工具打开带毒文件，搜索-查找上一步查询到的文件对应文件头编码。将对应编码前面的编码全部删掉，并保存。</li>
+<li>将保存文件的后缀改为文件后缀（比如.doc.exe改为.doc），打开该文件，发现文件内容正常了。</li>
+</ol>
+
+      
+     
+   </div>
+    <footer class="article-footer">
+      <a data-url="https://amy-ccc098.github.io/2021/12/13/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/" data-id="ckx4e85se0000lgvs6v72f4xo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/safety-study/" rel="tag">safety study</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/12/02/%E8%84%9A%E6%9C%AC%E7%97%85%E6%AF%92%E6%94%BB%E5%87%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">脚本病毒攻击</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/safety-study/" rel="tag">safety study</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/safety-study/" style="font-size: 10px;">safety study</a> <a href="/tags/study/" style="font-size: 10px;">study</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/12/13/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/">病毒识别</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/02/%E8%84%9A%E6%9C%AC%E7%97%85%E6%AF%92%E6%94%BB%E5%87%BB/">脚本病毒攻击</a>
+          </li>
+        
+          <li>
+            <a href="/2021/11/17/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">hexo搭建个人博客</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/31/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 CAIMI<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
