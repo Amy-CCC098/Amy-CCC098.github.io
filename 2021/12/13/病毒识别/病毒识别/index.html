@@ -7,17 +7,17 @@
   
   <title>病毒识别 | AMY&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="病毒识别1..exe文件定义　　a)、 EXE File可执行程序，一种可在操作系统存储空间中浮动定位的可执行程序。MS-DOS和MS-WINDOWS下，此类文件扩展名为exe。　　b)、 WINDOWS操作系统中的二进制可执行文件，可执行文件分两种一种是后缀名为.COM另一种就是.EXE了。.COM一般用于DOS，在WINDOWS系统中的执行文件一般都是.EXE文件在MS-DOS中，用以标识可执">
+  <meta name="description" content="1..exe文件定义　　a)、 EXE File可执行程序，一种可在操作系统存储空间中浮动定位的可执行程序。MS-DOS和MS-WINDOWS下，此类文件扩展名为exe。　　b)、 WINDOWS操作系统中的二进制可执行文件，可执行文件分两种一种是后缀名为.COM另一种就是.EXE了。.COM一般用于DOS，在WINDOWS系统中的执行文件一般都是.EXE文件在MS-DOS中，用以标识可执行文件的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="病毒识别">
 <meta property="og:url" content="https://amy-ccc098.github.io/2021/12/13/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/index.html">
 <meta property="og:site_name" content="AMY&#39;s BLOG">
-<meta property="og:description" content="病毒识别1..exe文件定义　　a)、 EXE File可执行程序，一种可在操作系统存储空间中浮动定位的可执行程序。MS-DOS和MS-WINDOWS下，此类文件扩展名为exe。　　b)、 WINDOWS操作系统中的二进制可执行文件，可执行文件分两种一种是后缀名为.COM另一种就是.EXE了。.COM一般用于DOS，在WINDOWS系统中的执行文件一般都是.EXE文件在MS-DOS中，用以标识可执">
+<meta property="og:description" content="1..exe文件定义　　a)、 EXE File可执行程序，一种可在操作系统存储空间中浮动定位的可执行程序。MS-DOS和MS-WINDOWS下，此类文件扩展名为exe。　　b)、 WINDOWS操作系统中的二进制可执行文件，可执行文件分两种一种是后缀名为.COM另一种就是.EXE了。.COM一般用于DOS，在WINDOWS系统中的执行文件一般都是.EXE文件在MS-DOS中，用以标识可执行文件的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-12-13T08:06:15.000Z">
-<meta property="article:modified_time" content="2021-12-13T08:07:26.531Z">
+<meta property="article:modified_time" content="2022-02-16T07:19:17.176Z">
 <meta property="article:author" content="CAIMI">
-<meta property="article:tag" content="safety study">
+<meta property="article:tag" content="safety">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="AMY&#39;s BLOG" type="application/atom+xml">
@@ -91,7 +91,7 @@
       
         
         
-        <h1 id="病毒识别"><a href="#病毒识别" class="headerlink" title="病毒识别"></a>病毒识别</h1><p><strong>1..exe文件定义</strong><br>　　a)、 EXE File可执行程序，一种可在操作系统存储空间中浮动定位的可执行程序。MS-DOS和MS-WINDOWS下，此类文件扩展名为exe。<br>　　b)、 WINDOWS操作系统中的二进制可执行文件，可执行文件分两种一种是后缀名为.COM另一种就是.EXE了。.COM一般用于DOS，在WINDOWS系统中的执行文件一般都是.EXE文件在MS-DOS中，用以标识可执行文件的扩展。</p>
+        <p><strong>1..exe文件定义</strong><br>　　a)、 EXE File可执行程序，一种可在操作系统存储空间中浮动定位的可执行程序。MS-DOS和MS-WINDOWS下，此类文件扩展名为exe。<br>　　b)、 WINDOWS操作系统中的二进制可执行文件，可执行文件分两种一种是后缀名为.COM另一种就是.EXE了。.COM一般用于DOS，在WINDOWS系统中的执行文件一般都是.EXE文件在MS-DOS中，用以标识可执行文件的扩展。</p>
 <p><strong>2..exe文件结构</strong><br>　　EXE文件比较复杂，每个EXE文件都有一个文件头，结构如下：<br>　　EXE文件头信息：<br>　　　　―――――――――――――――――――<br>　　　　├ 偏移量 ┤　意义　┤<br>　　　　├00h-01h ┤MZ’EXE文件标记　┤<br>　　　　├2h-03h　┤文件长度除512的余数　┤<br>　　　　├04h-05h ┤……………商　┤<br>　　　　├06h-07h ┤重定位项的个数　┤<br>　　　　├08h-09h ┤文件头除16的商　┤<br>　　　　├0ah-0bh ┤程序运行所需最小段数 ┤<br>　　　　├0ch-0dh ┤…………..大…. ┤<br>　　　　├oeh-0fh ┤堆栈段的段值 (SS)　┤<br>　　　　├10h-11h ┤……..sp　┤<br>　　　　├12h-13h ┤文件校验和　┤<br>　　　　├14h-15h ┤IP　┤<br>　　　　├16h-17h ┤CS　┤<br>　　　　├18h-19h ┤…………　┤<br>　　　　├1ah-1bh ┤…………　┤<br>　　 ├1ch　┤…………　┤　<br>　　EXE文件包含一个文件头和一个可重定位程序映象。文件头包含MS-DOS用于加载程序的信息，例如程序的大小和寄存器的初始值。文件头还指向一个重定位表，该表包含指向程序映象中可重定位段地址的指针链表。</p>
 <p><strong>3..TXT文件定义</strong><br>　　TXT是微软在操作系统上附带的一种文本格式，是最常见的一种文件格式 ，早在DOS时代应用就很多，主要存文本信息，即为文字信息，在微软在操作系统等于直接存，就是它了，现在多用的操作系统得使用记事本等程序保存，大多数软件可以查看，记事本，浏览器等等。</p>
 <p><strong>4..TXT文件优缺点</strong><br>　　txt格式的优势：<br>　　 　　a)：体积小、存储简单方便<br>　　 　　b)：txt格式比较简单，不会中毒<br>　　 　　c)：txt格式是电脑和很多移动设备的通用格式<br>　　txt格式的缺点:<br>　　 　　a)：用记事本阅读,不支持标签记录,不可以标记书签.<br>　　 　　b)：只能支持纯文字,不支持图像,不够生动.</p>
@@ -116,10 +116,10 @@
      
    </div>
     <footer class="article-footer">
-      <a data-url="https://amy-ccc098.github.io/2021/12/13/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/" data-id="ckzp80uw90002okvs3aypcncn" class="article-share-link">Share</a>
+      <a data-url="https://amy-ccc098.github.io/2021/12/13/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/" data-id="ckzp85zno000abwvs484b0wum" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/safety-study/" rel="tag">safety study</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/safety/" rel="tag">safety</a></li></ul>
 
     </footer>
   </div>
@@ -158,7 +158,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cisp-nisp/" rel="tag">cisp/nisp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fun-stuff/" rel="tag">fun stuff</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/safety-study/" rel="tag">safety study</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cisp/" rel="tag">cisp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fun-stuff/" rel="tag">fun stuff</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/safety/" rel="tag">safety</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
     </div>
   </div>
 
@@ -168,7 +168,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/cisp-nisp/" style="font-size: 10px;">cisp/nisp</a> <a href="/tags/fun-stuff/" style="font-size: 10px;">fun stuff</a> <a href="/tags/safety-study/" style="font-size: 10px;">safety study</a> <a href="/tags/study/" style="font-size: 10px;">study</a>
+      <a href="/tags/cisp/" style="font-size: 10px;">cisp</a> <a href="/tags/fun-stuff/" style="font-size: 10px;">fun stuff</a> <a href="/tags/safety/" style="font-size: 20px;">safety</a> <a href="/tags/study/" style="font-size: 10px;">study</a>
     </div>
   </div>
 
