@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>UltraEdit、WinDBG的使用 | AMY&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="UltraEdit、WinDBG的使用UltraEdit的使用UltraEdit的介绍​    UltraEdita是一个可以编辑文本、十六进制、ASCII码的文本编辑器。内建英文单字检查、C++及VB指令突显、可同时编辑多个文件。使用UltraEdit的时候可以通过“文件-打开”，也可以在资源管理器中选择要打开的文件。通过“文件-新建”创建新的空白文档。   文件格式的种类及定义​    文件格">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UltraEdit、WinDBG的使用">
+<meta property="og:url" content="https://amy-ccc098.github.io/2021/12/20/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="AMY&#39;s BLOG">
+<meta property="og:description" content="UltraEdit、WinDBG的使用UltraEdit的使用UltraEdit的介绍​    UltraEdita是一个可以编辑文本、十六进制、ASCII码的文本编辑器。内建英文单字检查、C++及VB指令突显、可同时编辑多个文件。使用UltraEdit的时候可以通过“文件-打开”，也可以在资源管理器中选择要打开的文件。通过“文件-新建”创建新的空白文档。   文件格式的种类及定义​    文件格">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F28.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F29.tmp.jpg">
+<meta property="og:image" content="https://amy-ccc098.github.io/2021/12/20/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/Users/艾小米/AppData/Local/Temp/ksohtml/wps7F2A.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F2B.tmp.jpg">
+<meta property="og:image" content="https://amy-ccc098.github.io/2021/12/20/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/Users/艾小米/AppData/Local/Temp/ksohtml/wps7F2C.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F2D.tmp.jpg">
+<meta property="og:image" content="https://amy-ccc098.github.io/2021/12/20/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/Users/艾小米/AppData/Local/Temp/ksohtml/wps7F2E.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F2F.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F40.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F41.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F42.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F43.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F44.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F45.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F46.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F47.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F48.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F49.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F4A.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F4B.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F4C.tmp.jpg">
+<meta property="article:published_time" content="2021-12-20T12:02:12.000Z">
+<meta property="article:modified_time" content="2022-02-20T14:23:20.984Z">
+<meta property="article:author" content="CAIMI">
+<meta property="article:tag" content="study">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F28.tmp.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="AMY&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">AMY&#39;s BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Amy-CCC098.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-UltraEdit、WinDBG的使用/UltraEdit、WinDBG的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/20/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2021-12-20T12:02:12.000Z" itemprop="datePublished">2021-12-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      UltraEdit、WinDBG的使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+        <h1 id="UltraEdit、WinDBG的使用"><a href="#UltraEdit、WinDBG的使用" class="headerlink" title="UltraEdit、WinDBG的使用"></a>UltraEdit、WinDBG的使用</h1><h2 id="UltraEdit的使用"><a href="#UltraEdit的使用" class="headerlink" title="UltraEdit的使用"></a>UltraEdit的使用</h2><h3 id="UltraEdit的介绍"><a href="#UltraEdit的介绍" class="headerlink" title="UltraEdit的介绍"></a>UltraEdit的介绍</h3><p>​    UltraEdita是一个可以编辑文本、十六进制、ASCII码的文本编辑器。内建英文单字检查、C++及VB指令突显、可同时编辑多个文件。使用UltraEdit的时候可以通过“文件-打开”，也可以在资源管理器中选择要打开的文件。通过“文件-新建”创建新的空白文档。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F28.tmp.jpg" alt="img"> </p>
+<h3 id="文件格式的种类及定义"><a href="#文件格式的种类及定义" class="headerlink" title="文件格式的种类及定义"></a>文件格式的种类及定义</h3><p>​    文件格式是指电脑为了存储信息而使用的对信息的特殊编码方式，是用于识别内部储存的资料。比如有的储存图片，有的储存程序，有的储存文字信息。每一类信息，都可以用一种或多种文件格式保存在电脑存储中。每一种文件格式通常会有一种或多种扩展名可以用来识别，但也可能没有扩展名。扩展名可以帮助应用程序识别的文件格式。</p>
+<p>常见的文件格式有：</p>
+<p>（1）.doc：Microsoft Office中Word创建的文档</p>
+<p>（2）.exe：可执行文件</p>
+<p>（3）.gif：动态图片文件</p>
+<p>（4）.jpg：静态图像文件</p>
+<p>（5）.pdf：可导出文档格式文件（可用浏览器显示）</p>
+<p>（6）.htm/.html：超文本文档</p>
+<p>（7）.obj：对象文件</p>
+<p>（8）.rar/.zip：RAR压缩文件</p>
+<p>（9）.bak：备份文件</p>
+<h2 id="UltraEdit应用实例"><a href="#UltraEdit应用实例" class="headerlink" title="UltraEdit应用实例"></a>UltraEdit应用实例</h2><p><strong>一、用UltraEdit工具查看doc和gif文件类型</strong></p>
+<p>1.1查看打开的1-1.doc文件,并在“00002730h”行查询此文件的格式标识。如图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F29.tmp.jpg" alt="img"> </p>
+<p>在“00002730h”行显示Microsoft Office Word，说明此文件格式为word文档证明，为.doc文件。</p>
+<p>1.2再次使用UltraEdit软件打开1-2-2.gif文件。如图所示：</p>
+<p><img src="/2021/12/20/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/Users\艾小米\AppData\Local\Temp\ksohtml\wps7F2A.tmp.jpg" alt="img"> </p>
+<p>第一行出现GIF，证明它是GIF类型文件。</p>
+<p><strong>二、用UltraEdit工具查看rar和zip压缩包及其包含文件的文件类型</strong></p>
+<p>2.1使用UltraEdit软件打开1-3.rar，可以看到文件格式为Rar，如图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F2B.tmp.jpg" alt="img"> </p>
+<p>我们还可以再UltraEdit软件中查找到1-3.rar中包含的格式以及1-3.rar里的文件格式，如图所示：</p>
+<p><img src="/2021/12/20/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/Users\艾小米\AppData\Local\Temp\ksohtml\wps7F2C.tmp.jpg" alt="img"> </p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F2D.tmp.jpg" alt="img"> </p>
+<p><img src="/2021/12/20/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/Users\艾小米\AppData\Local\Temp\ksohtml\wps7F2E.tmp.jpg" alt="img"> </p>
+<p>2.2使用UltraEdit打开1-3.zip文件，如图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F2F.tmp.jpg" alt="img"> </p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F40.tmp.jpg" alt="img"> </p>
+<p>可以看到用UltraEdit打开.zip文件，文件头会有.PK，并且在下面也可以找到.zip压缩文件里面的文件有1-1.doc、1-2.gif、1-2-2.gif三个文件。</p>
+<p><strong>三、用UltraEdit工具查看未知文件类型的文件，猜测文件类型。</strong></p>
+<p>1、我们使用UltraEdit软件打开1-4的文件，查找显示该文件格式的位置，如图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F41.tmp.jpg" alt="img"> </p>
+<p>查找到格式为Pwoerpoint Document后，可以确定1-4的文件为PPT格式。</p>
+<p>2、修改1-4文件的后缀为1-4.ppt。如图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F42.tmp.jpg" alt="img"> </p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F43.tmp.jpg" alt="img"> </p>
+<p>正确打开，说明文件确实是ppt格式。</p>
+<p><strong>总结：</strong>文件格式是指电脑为了存储信息而使用的对信息的特殊编码方式，是用于识别内部储存的资料，因此不同格式的文件用UltraEdit查看，得到的结果也会不一样。因此，我们可以通过文件格式对应的一些标识来判断文件类型。</p>
+<hr>
+<h2 id="WinDBG的使用"><a href="#WinDBG的使用" class="headerlink" title="WinDBG的使用"></a>WinDBG的使用</h2><h3 id="windbg调试程序的介绍"><a href="#windbg调试程序的介绍" class="headerlink" title="windbg调试程序的介绍"></a>windbg调试程序的介绍</h3><p>Windbg是微软的一个调试程序，可用于用户模式和内核模式的程序调试，可进行C/C++语言和汇编的源程序级的调试。它的图形界面程序中有菜单栏、工具栏、命令窗、状态栏、观察窗等。</p>
+<p>Windbg支持源程序模式和汇编模式两种操作模式。它可以识别MASM和C++两种表达式，在MASM表达式中，windbg启动后默认使用十六进制的数字，符号作为地址对待，任何符号的数值都表示其存储器的地址；在C++表达式中，表达式与实际源程序中的含义相同，符号作为相应的数据类型看待，无对应C++数据类型的符号会产生语法错误。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F44.tmp.jpg" alt="img"> </p>
+<h3 id="windbg的使用"><a href="#windbg的使用" class="headerlink" title="windbg的使用"></a>windbg的使用</h3><p>可以通过“file-open executable”打开可执行文件，在打开可执行文件的同时也会打开一个命令窗和运行窗口。通过“file-open source file”打开源程序文件，然后进行源程序模式的调试。</p>
+<p>调试分为断点调试和单步调试。断点调试是在程序中设置暂时终止执行的位置，然后让程序开始或继续执行，直到遇到断点停止，当然，如果遇到程序异常或程序结束，也会停止，测试过的程序可以选择重新开始；单步调试是以一条语句或者一个指令为步进单位的调试方式，每次执行一条语句或指令，然后暂停并显示执行成功。单步调试又可以分为单步通过和单步进入，单步通过会把函数作为一条语句执行，不进入函数内部；而单步进入会进入函数内部进行函数体的单步测试。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F45.tmp.jpg" alt="img"> </p>
+<p>如上图，windbg界面的工具栏，从左到右依次是go(开始或继续执行，直到遇到断点，出现异常或程序结束)、restart（重新开始执行）、stop debugging（停止调试）、break（停止进程或线程）、step into（单步进入调试）、step over（单步通过调试）、step out（单步跳出）、run to cursor（运行到光标）、设置断点、command（打开命令窗）、watch（打开观察窗）、locals（打开局部窗）、registers（打开寄存器窗）、memory（打开存储器窗）、call stack（打开调用窗）、disassembly（打开反汇编窗）、scratch pad（打开记事本）、process and threads(打开进程和线程窗)、command browser（打开命令浏览器窗）、源程序调试模式、汇编调试模式、font（设置字体格式）、options（打开选项对话框）。</p>
+<h3 id="操作实例"><a href="#操作实例" class="headerlink" title="操作实例"></a>操作实例</h3><p><strong>一、对汇编程序进行调试</strong></p>
+<p>1.1用notepad写一段汇编代码，保存后将原本.txt文件的后缀改为.asm</p>
+<p>1.2然后对源程序进行汇编，翻译成由机器代码组成的目标模块文件。进入已建立的MASM目录，键入如下命令：BIN\ML -c -coff eg0101.asm（eg0101.asm是源程序的文件名）。ML表示运行ML.EXE程序，参数“-c”表示仅利用ML实现源程序的汇编，参数“-coff”表示生成COFF格式的目标模块文件，COFF是32位Windows和UNIX操作系统使用的目标文件格式。这样就可以完成源程序的汇编。源程序没有错误，MASM就会自动生成一个目标模块文件EG0101.obj。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F46.tmp.jpg" alt="img"></td>
+</tr>
+</tbody></table>
+<p>1.3之后要将目标文件连接，将一个或多个目标文件和库文件合成一个可执行文件，键入如下命令：BIN\LINK32 /subsystem:console eg0101.obj（eg0101.obj是上一步生成的的目标模块文件）。其中，参数“/subsystem:console”表示生成Windows控制台环境的可执行文件。如果生成图形窗口的可执行文件，则使用“/subsystem:windows”参数。</p>
+<p>如果连接过程没有出错，将自动生成一个可执行文件，否则连接程序会给出错误信息。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F47.tmp.jpg" alt="img"> </p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F48.tmp.jpg" alt="img"> </p>
+<p>1.4随后，运行Windows控制台或模拟DOS环境的可执行文件。进入控制台，然后在命令提示符下输入.exe的文件名，按下回车键。操作系统会装载文件进入主存，开始运行。</p>
+<p>1.5最后，就可以在反汇编程序WinDbg中调试程序，先在“file-source file path”添加源程序路径。</p>
+<p>1.6通过“file-open executable”打开之前建立的的可执行文件test.exe。在出现的界面中可以看到，不同的数据以十六进制的方式存储在不同的寄存器中。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F49.tmp.jpg" alt="img"> </p>
+<p>1.7打开源文件“file-open source file”文件类型选择assembly source files，打开test.asm，进行代码调试。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F4A.tmp.jpg" alt="img"> </p>
+<p>1.8可以点击工具栏如图按钮<img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F4B.tmp.jpg" alt="img">或者F11进行单步调试，直到程序结束，观察每一步在机器中是怎么样进行的，每进行一步，寄存器中的数值就会做出相应的变化。也可以设置断点，然后在命令栏输入g前进到断点。当程序可以正常运行并结束是，会出现程序运行结果，如下图：</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7F4C.tmp.jpg" alt="img"> </p>
+<p><strong>总结：</strong>Windbg是Windows的一个调试程序，可以进行源代码调试和汇编调试。调试分为单步调试和断点调试，单步调试中又可以选择是否跳过函数体。它是一个功能非常强大的Windows调试程序。</p>
+
+      
+     
+   </div>
+    <footer class="article-footer">
+      <a data-url="https://amy-ccc098.github.io/2021/12/20/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/" data-id="ckzvd1q7d0001tovsgrbhexbf" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/01/14/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E4%BF%9D%E9%9A%9C/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E4%BF%9D%E9%9A%9C/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          信息安全保障
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/12/13/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">病毒识别</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cisp/" rel="tag">cisp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fun-stuff/" rel="tag">fun stuff</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/safety/" rel="tag">safety</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/cisp/" style="font-size: 10px;">cisp</a> <a href="/tags/fun-stuff/" style="font-size: 10px;">fun stuff</a> <a href="/tags/safety/" style="font-size: 20px;">safety</a> <a href="/tags/study/" style="font-size: 15px;">study</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/02/14/%E3%80%8A%E5%85%B3%E4%BA%8E%E6%88%91%E5%B0%86%E7%BE%BD%E7%94%9F%E7%BB%93%E5%BC%A6%E6%AF%94%E8%B5%9B%E8%A7%86%E9%A2%91%E5%81%9A%E6%88%90%E8%AF%8D%E4%BA%91%E8%A7%86%E9%A2%91%E3%80%8B/%E3%80%8A%E5%85%B3%E4%BA%8E%E6%88%91%E5%B0%86%E7%BE%BD%E7%94%9F%E7%BB%93%E5%BC%A6%E6%AF%94%E8%B5%9B%E8%A7%86%E9%A2%91%E5%81%9A%E6%88%90%E8%AF%8D%E4%BA%91%E8%A7%86%E9%A2%91%E3%80%8B/">《关于我将羽生结弦比赛视频做成词云视频》</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/14/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E4%BF%9D%E9%9A%9C/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E4%BF%9D%E9%9A%9C/">信息安全保障</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/20/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/UltraEdit%E3%80%81WinDBG%E7%9A%84%E4%BD%BF%E7%94%A8/">UltraEdit、WinDBG的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/13/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/%E7%97%85%E6%AF%92%E8%AF%86%E5%88%AB/">病毒识别</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/02/%E8%84%9A%E6%9C%AC%E7%97%85%E6%AF%92%E6%94%BB%E5%87%BB/%E8%84%9A%E6%9C%AC%E7%97%85%E6%AF%92%E6%94%BB%E5%87%BB/">脚本病毒攻击</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 CAIMI<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
