@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>U盾、Https、中间人攻击、RSA加密 | AMY&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="U盾U盾一般用于网上银行，一般客户的数字证书一份放在U盾里的私钥，一份在银行的公钥。 当客户进行网上交易时，银行会向客户发送由时间字串，地址字串，交易信息字串，防重放攻击字串组合在一起进行加密后得到的字串A，客户的U盾将跟据你的个人证书对字串A进行不可逆运算得到字串B，并将字串B发送给银行，银行端也同时进行该不可逆运 算，如果银行运算结果和客户的运算结果一致便认为该客户合法，交易便可以完成。否则，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="U盾、Https、中间人攻击、RSA加密">
+<meta property="og:url" content="https://amy-ccc098.github.io/2022/02/22/U%E7%9B%BE%E3%80%81Https%E3%80%81%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E3%80%81RSA%E5%8A%A0%E5%AF%86/U%E7%9B%BE%E3%80%81Https%E3%80%81%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E3%80%81RSA%E5%8A%A0%E5%AF%86/index.html">
+<meta property="og:site_name" content="AMY&#39;s BLOG">
+<meta property="og:description" content="U盾U盾一般用于网上银行，一般客户的数字证书一份放在U盾里的私钥，一份在银行的公钥。 当客户进行网上交易时，银行会向客户发送由时间字串，地址字串，交易信息字串，防重放攻击字串组合在一起进行加密后得到的字串A，客户的U盾将跟据你的个人证书对字串A进行不可逆运算得到字串B，并将字串B发送给银行，银行端也同时进行该不可逆运 算，如果银行运算结果和客户的运算结果一致便认为该客户合法，交易便可以完成。否则，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202202221558738.jpg">
+<meta property="article:published_time" content="2022-02-22T07:57:45.000Z">
+<meta property="article:modified_time" content="2022-02-22T07:58:51.839Z">
+<meta property="article:author" content="CAIMI">
+<meta property="article:tag" content="safety">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202202221558738.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="AMY&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">AMY&#39;s BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Amy-CCC098.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-U盾、Https、中间人攻击、RSA加密/U盾、Https、中间人攻击、RSA加密" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/02/22/U%E7%9B%BE%E3%80%81Https%E3%80%81%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E3%80%81RSA%E5%8A%A0%E5%AF%86/U%E7%9B%BE%E3%80%81Https%E3%80%81%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E3%80%81RSA%E5%8A%A0%E5%AF%86/" class="article-date">
+  <time datetime="2022-02-22T07:57:45.000Z" itemprop="datePublished">2022-02-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      U盾、Https、中间人攻击、RSA加密
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+        <h2 id="U盾"><a href="#U盾" class="headerlink" title="U盾"></a>U盾</h2><p>U盾一般用于网上银行，一般客户的数字证书一份放在U盾里的私钥，一份在银行的公钥。</p>
+<p>当客户进行网上交易时，银行会向客户发送由时间字串，地址字串，交易信息字串，防重放攻击字串组合在一起进行加密后得到的字串A，客户的U盾将跟据你的个人证书对字串A进行不可逆运算得到字串B，并将字串B发送给银行，银行端也同时进行该不可逆运 算，如果银行运算结果和客户的运算结果一致便认为该客户合法，交易便可以完成。否则，认为不一致，交易失败。</p>
+<h2 id="Https"><a href="#Https" class="headerlink" title="Https"></a>Https</h2><p>http的内容是明文传输的，数据会经过中间代理服务器，路由器，通信服务商等，在信息传输过程中很容易受到中间人攻击。而https中存在对数字签名的验证和非对称加密机制。</p>
+<p>对称加密加密解密使用同一个密钥，加解密效率高，但安全性低。</p>
+<p>非对称加密加密和解密使用不同的秘钥，一把作为公开的公钥，另一把作为私钥。公钥加密的信息，只有私钥才能解密。私钥加密的信息，只有公钥才能解密。安全性较高。</p>
+<p>https安全性过程：</p>
+<p>1.浏览器将自己支持的一套加密规则发送给网站。 </p>
+<p>2.网站从中选出一组加密算法与HASH算法，并将自己的身份信息以证书的形式发回给浏览器。</p>
+<p>3.浏览器获得网站证书之后浏览器，验证证书的合法性。如果证书受信任，则浏览器栏里面会显示一个小锁头，否则会给出证书不受信的提示。 当证书受信，浏览器会生成一串随机数的密码，并用证书中提供的公钥加密。 同时，浏览器使用约定好的HASH算法计算握手消息，并使用生成的随机数对消息进行加密，最后将之前生成的所有信息发送给网站。 </p>
+<p>4.网站接收浏览器发来的数据使用自己的私钥将信息解密取出密码，使用密码解密浏览器发来的握手消息，并验证HASH是否与浏览器发来的一致。随后再使用密码加密一段握手消息，发送给浏览器。 </p>
+<p>5.浏览器解密并计算握手消息的HASH，如果与服务端发来的HASH一致，此时握手过程结束，之后所有的通信数据将由之前浏览器生成的随机密码并利用对称加密算法进行加密。</p>
+<h2 id="中间人攻击"><a href="#中间人攻击" class="headerlink" title="中间人攻击"></a>中间人攻击</h2><p>两个人之间的通信产生了一个中间人，中间人截获两个人的公钥，当A给B发信息时，将信息截获，用A的公钥解密，再用自己的公钥加密发给B。B发回给A信息，也被中间人截获，加密再使用自己的公钥加密发还给A。</p>
+<p>具体过程：</p>
+<p>1、Alice向Bob请求公钥，但是却被Tom截获。</p>
+<p>2、Tom向Bob发送公钥请求。</p>
+<p>3、Bob将公钥发给Tom。</p>
+<p>4、Tom截获了Bob的公钥，然后替换成自己的公钥发给Alice。</p>
+<p>5、Alice将Tom的公钥当成了Bob的公钥，并用其加密信息，发给Bob。</p>
+<p>6、Tom截获了加密信息，用自己的私钥解密，获得明文。同时伪造新的信息，再用Bob的公钥加密，发给Bob。</p>
+<p>7、Bob获得加密信息，用自己的私钥解密。</p>
+<img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202202221558738.jpg" alt="img" style="zoom:80%;">
+
+ 
+
+<h2 id="RSA加密"><a href="#RSA加密" class="headerlink" title="RSA加密"></a>RSA加密</h2><p>RSA加密利用了单向函数正向求解简单，反向求解困难的原理，用了大整数分解问题，实现了公开密钥。</p>
+<p>A将公钥发给每一个人，其他人要把加密的信息用公钥加密后发送给A，A只要用自己的私钥开公钥就知道加密的信息了。而A要发送给B信息，只需要知道B的公钥就可以了。</p>
+<p>加密过程：</p>
+<p>\1. 选取一个素数对p,q</p>
+<p>\2. 求素数对的公倍数n=p*q</p>
+<p>\3. 计算其欧拉数（即小于n并与n互素的数的个数）,φ(n）=（p-1）*(q-1)</p>
+<p>\4. 找到一个0&lt;e&lt;φ(n),使de≡1(mod φ(n))</p>
+<p>\5. 形成的（n,e）为公钥，（n,d）为私钥</p>
+
+      
+     
+   </div>
+    <footer class="article-footer">
+      <a data-url="https://amy-ccc098.github.io/2022/02/22/U%E7%9B%BE%E3%80%81Https%E3%80%81%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E3%80%81RSA%E5%8A%A0%E5%AF%86/U%E7%9B%BE%E3%80%81Https%E3%80%81%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E3%80%81RSA%E5%8A%A0%E5%AF%86/" data-id="ckzxu753f0002vsvs4iawdld3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/safety/" rel="tag">safety</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/02/21/%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E6%96%B9%E6%B3%95/%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">文件恢复方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cisp/" rel="tag">cisp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/fun-stuff/" rel="tag">fun stuff</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/safety/" rel="tag">safety</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/study/" rel="tag">study</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/" rel="tag">tools</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/cisp/" style="font-size: 10px;">cisp</a> <a href="/tags/fun-stuff/" style="font-size: 10px;">fun stuff</a> <a href="/tags/safety/" style="font-size: 20px;">safety</a> <a href="/tags/study/" style="font-size: 15px;">study</a> <a href="/tags/tools/" style="font-size: 15px;">tools</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/02/22/U%E7%9B%BE%E3%80%81Https%E3%80%81%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E3%80%81RSA%E5%8A%A0%E5%AF%86/U%E7%9B%BE%E3%80%81Https%E3%80%81%E4%B8%AD%E9%97%B4%E4%BA%BA%E6%94%BB%E5%87%BB%E3%80%81RSA%E5%8A%A0%E5%AF%86/">U盾、Https、中间人攻击、RSA加密</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E6%96%B9%E6%B3%95/%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E6%96%B9%E6%B3%95/">文件恢复方法</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/20/owasp-top-10/owasp-top-10/">owasp top 10</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/14/%E3%80%8A%E5%85%B3%E4%BA%8E%E6%88%91%E5%B0%86%E7%BE%BD%E7%94%9F%E7%BB%93%E5%BC%A6%E6%AF%94%E8%B5%9B%E8%A7%86%E9%A2%91%E5%81%9A%E6%88%90%E8%AF%8D%E4%BA%91%E8%A7%86%E9%A2%91%E3%80%8B/%E3%80%8A%E5%85%B3%E4%BA%8E%E6%88%91%E5%B0%86%E7%BE%BD%E7%94%9F%E7%BB%93%E5%BC%A6%E6%AF%94%E8%B5%9B%E8%A7%86%E9%A2%91%E5%81%9A%E6%88%90%E8%AF%8D%E4%BA%91%E8%A7%86%E9%A2%91%E3%80%8B/">《关于我将羽生结弦比赛视频做成词云视频》</a>
+          </li>
+        
+          <li>
+            <a href="/2022/01/14/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E4%BF%9D%E9%9A%9C/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8%E4%BF%9D%E9%9A%9C/">信息安全保障</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 CAIMI<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
