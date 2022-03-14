@@ -7,14 +7,17 @@
   
   <title>owasp top 10 | AMY&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="owasp top 10 owasp是开放 Web 应用程序安全项目   代码注入 包括有sql注入等，它可以导致数据丢失或破坏，甚至可能可以使攻击者完全接管主机 防范方法：  规范化输入验证方法 对输入的特殊字符进行转义   认证失败 会话管理或者身份认证错误，使攻击者可以破坏密码、密钥、令牌、冒充其他用户身份 它可能会导致账户遭受攻击，攻击者可以用此账户进行任何合法的操作 防范方法：  使用单">
+<meta property="og:type" content="article">
 <meta property="og:title" content="owasp top 10">
 <meta property="og:url" content="https://amy-ccc098.github.io/2022/02/20/owasp-top-10/owasp-top-10/index.html">
 <meta property="og:site_name" content="AMY&#39;s BLOG">
+<meta property="og:description" content="owasp top 10 owasp是开放 Web 应用程序安全项目   代码注入 包括有sql注入等，它可以导致数据丢失或破坏，甚至可能可以使攻击者完全接管主机 防范方法：  规范化输入验证方法 对输入的特殊字符进行转义   认证失败 会话管理或者身份认证错误，使攻击者可以破坏密码、密钥、令牌、冒充其他用户身份 它可能会导致账户遭受攻击，攻击者可以用此账户进行任何合法的操作 防范方法：  使用单">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-02-20T14:26:18.000Z">
-<meta property="article:modified_time" content="2022-02-20T14:26:18.270Z">
+<meta property="article:modified_time" content="2022-03-14T05:31:59.514Z">
 <meta property="article:author" content="CAIMI">
+<meta property="article:tag" content="study">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="AMY&#39;s BLOG" type="application/atom+xml">
@@ -88,14 +91,77 @@
       
         
         
-        
+        <p>owasp top 10</p>
+<p>owasp是开放 Web 应用程序安全项目 </p>
+<ul>
+<li><p>代码注入</p>
+<p>包括有sql注入等，它可以导致数据丢失或破坏，甚至可能可以使攻击者完全接管主机</p>
+<p>防范方法：</p>
+<ol>
+<li>规范化输入验证方法</li>
+<li>对输入的特殊字符进行转义</li>
+</ol>
+</li>
+<li><p>认证失败</p>
+<p>会话管理或者身份认证错误，使攻击者可以破坏密码、密钥、令牌、冒充其他用户身份</p>
+<p>它可能会导致账户遭受攻击，攻击者可以用此账户进行任何合法的操作</p>
+<p>防范方法：</p>
+<ol>
+<li>使用单一的人口点</li>
+<li>登录SSL保护的网页</li>
+<li>使用内置的会话管理功能</li>
+</ol>
+</li>
+<li><p>敏感数据暴露</p>
+<p>防范方法：保护敏感数据，防止隐私泄露</p>
+</li>
+<li><p>XML外部实体</p>
+</li>
+<li><p>损坏的访问控制</p>
+</li>
+<li><p>安全配置错误</p>
+<p>攻击者通过访问默认账户，未使用的网页，未安装的补丁的漏洞，未被保护的文件和目录等，以获得对系统为授权的访问</p>
+<p>系统可能在未知的情况下被完全攻破，用户数据可能随着时间被全部盗走或篡改。甚至导致整个系统被完全破坏</p>
+<p>如何防范：</p>
+<ol>
+<li>自动化安装部署</li>
+<li>及时了解并部署每个环节的软件更新和补丁信息</li>
+<li>实施漏洞扫描和安全审计</li>
+</ol>
+</li>
+<li><p>XSS</p>
+<p>程序发送给浏览器页面中的数据未经过转移和适当的验证，就会导致跨站攻击</p>
+<p>攻击者在受害者浏览器中执行脚本以劫持用户会话，插入恶意内容，重定向用户，使用恶意软件劫持用户浏览器等</p>
+<p>防范方法：</p>
+<ol>
+<li>验证输入</li>
+<li>编码输出</li>
+</ol>
+</li>
+<li><p>不安全的反序列化</p>
+</li>
+<li><p>使用具有已知漏洞的组件</p>
+<p>应用程序使用带有已知漏洞的组件会破坏应用程序防御系统，可能导致严重的数据丢失或服务器接管</p>
+<p>防范方法：</p>
+<ol>
+<li>建立安全策略来管理组件的使用</li>
+<li>及时更新组件</li>
+<li>识别正在使用的组件和版本，包括所有的依赖</li>
+</ol>
+</li>
+<li><p>记录和监控不足</p>
+</li>
+</ul>
+
       
      
    </div>
     <footer class="article-footer">
-      <a data-url="https://amy-ccc098.github.io/2022/02/20/owasp-top-10/owasp-top-10/" data-id="cl0br6s1t0005hwvscy9s3i47" class="article-share-link">Share</a>
+      <a data-url="https://amy-ccc098.github.io/2022/02/20/owasp-top-10/owasp-top-10/" data-id="cl0qtlfxo0006iwvscsnd9ceb" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
+
     </footer>
   </div>
   
