@@ -7,15 +7,15 @@
   
   <title>软件测试 | AMY&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="软件测试软件生命周期模型 大爆炸模型 边做边改模型 瀑布模型 螺旋模型  软件开发流程：了解客户需求，配置相关资源——明确需求，确定开发、测试方法 软件开发模型： 瀑布模型 迭代模型 增量模型 原型模型  CMM：初始级-可重复级-已定义级-已管理级-优化级 单元测试-集成测试-确认测试-系统测试-验收测试  单元测试：对模块进行测试 集成测试：模块整合起来，对各单元之间的接口进行测试 确认测试：">
+  <meta name="description" content="软件测试软件生命周期模型 大爆炸模型 边做边改模型 瀑布模型 螺旋模型  软件开发流程：需求分析——设计阶段——编码——测试 软件开发模型： 瀑布模型 迭代模型 增量模型 原型模型  CMM：初始级-可重复级-已定义级-已管理级-优化级 单元测试-集成测试-确认测试-系统测试-验收测试  单元测试：对模块进行测试 集成测试：模块整合起来，对各单元之间的接口进行测试 确认测试：软件功能和性能是否与用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="软件测试">
 <meta property="og:url" content="https://amy-ccc098.github.io/2022/01/25/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/index.html">
 <meta property="og:site_name" content="AMY&#39;s BLOG">
-<meta property="og:description" content="软件测试软件生命周期模型 大爆炸模型 边做边改模型 瀑布模型 螺旋模型  软件开发流程：了解客户需求，配置相关资源——明确需求，确定开发、测试方法 软件开发模型： 瀑布模型 迭代模型 增量模型 原型模型  CMM：初始级-可重复级-已定义级-已管理级-优化级 单元测试-集成测试-确认测试-系统测试-验收测试  单元测试：对模块进行测试 集成测试：模块整合起来，对各单元之间的接口进行测试 确认测试：">
+<meta property="og:description" content="软件测试软件生命周期模型 大爆炸模型 边做边改模型 瀑布模型 螺旋模型  软件开发流程：需求分析——设计阶段——编码——测试 软件开发模型： 瀑布模型 迭代模型 增量模型 原型模型  CMM：初始级-可重复级-已定义级-已管理级-优化级 单元测试-集成测试-确认测试-系统测试-验收测试  单元测试：对模块进行测试 集成测试：模块整合起来，对各单元之间的接口进行测试 确认测试：软件功能和性能是否与用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-25T05:45:38.000Z">
-<meta property="article:modified_time" content="2022-03-21T06:12:51.225Z">
+<meta property="article:modified_time" content="2022-03-27T04:16:33.555Z">
 <meta property="article:author" content="CAIMI">
 <meta property="article:tag" content="study">
 <meta name="twitter:card" content="summary">
@@ -97,7 +97,7 @@
 <li>瀑布模型</li>
 <li>螺旋模型</li>
 </ul>
-<p><strong>软件开发流程：</strong>了解客户需求，配置相关资源——明确需求，确定开发、测试方法</p>
+<p><strong>软件开发流程：</strong>需求分析——设计阶段——编码——测试</p>
 <h3 id="软件开发模型："><a href="#软件开发模型：" class="headerlink" title="软件开发模型："></a>软件开发模型：</h3><ul>
 <li>瀑布模型</li>
 <li>迭代模型</li>
@@ -124,13 +124,13 @@
 <li>静态测试：通过评审文档，分析代码来测试软件，不实际运行程序。可以为测试用例选取提供指导</li>
 <li>动态测试：运行程序以此来测试软件，包括黑盒测试、白盒测试<ul>
 <li>白盒测试：基于程序内部逻辑和数据流程的测试，代码级的测试<ol>
-<li>语句覆盖</li>
-<li>判断覆盖</li>
-<li>条件覆盖</li>
-<li>路径覆盖</li>
-<li>条件组合覆盖（覆盖能力最强）</li>
-<li>判断/条件覆盖</li>
-<li>基本路径覆盖</li>
+<li>语句覆盖：每条语句至少执行一次</li>
+<li>判断覆盖：每个判定的分支至少执行一次</li>
+<li>条件覆盖：每个判定的每个条件应取到各种可能的值</li>
+<li>路径覆盖：程序中每一条可能的路径至少执行一次</li>
+<li>条件组合覆盖（覆盖能力最强）：覆盖每个判定中个条件的每一种组合至少出现一次</li>
+<li>判断/条件覆盖：同时满足判定覆盖条件覆盖</li>
+<li>基本路径覆盖：程序中每一条可能的路径至少执行一次</li>
 </ol>
 </li>
 <li>黑盒测试：对程序内部逻辑了解有限的基础上进行的测试<ol>
@@ -138,15 +138,19 @@
 <li>边界值分析：边界值进行测试</li>
 <li>错误推测：按经验看有什么错误</li>
 <li>因果图：输入条件之间的联系、组合，不同的联系组合可能会产生不同的情况</li>
-<li>决策表</li>
-<li>综合策略</li>
+<li>判定表法</li>
+<li>业务流程分析法</li>
+<li>输入域测试</li>
+<li>输出域分析</li>
+<li>逐级细分</li>
 <li>正交表测试：用最少的实验覆盖最多的操作，测试用例设计很少，效率高，但是很复杂</li>
 </ol>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="系统测试中："><a href="#系统测试中：" class="headerlink" title="系统测试中："></a>系统测试中：</h3><ul>
+<h3 id="系统测试中："><a href="#系统测试中：" class="headerlink" title="系统测试中："></a>系统测试中：</h3><p>对集成了软硬件的完整系统进行测试</p>
+<ul>
 <li>负载测试</li>
 <li>强度测试</li>
 <li>容量测试</li>
@@ -176,7 +180,7 @@
      
    </div>
     <footer class="article-footer">
-      <a data-url="https://amy-ccc098.github.io/2022/01/25/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" data-id="cl1289w0t000sy0vs1mv2053o" class="article-share-link">Share</a>
+      <a data-url="https://amy-ccc098.github.io/2022/01/25/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" data-id="cl18rs91a000tjkvs1ohv7pyw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
