@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>wireshark的使用 | AMY&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="工具简述1、wireshark工具的使用Wireshark是一款抓包工具，能获取HTTP，也能获取HTTPS，但是不能解密HTTPS。 打开wireshark，选择要监听的端口，然后开始抓包。  抓包界面如下图所示，包的详细信息里对应OSI七层模型：  在嗅探包的时候会有很多各种各样的包，所以我们可以通过设置过滤来查看我们想要的包。 1.1地址过滤  指定源ip：ip.src &#x3D;&#x3D; IP 指定目的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wireshark的使用">
+<meta property="og:url" content="https://amy-ccc098.github.io/2022/04/03/wireshark%E7%9A%84%E4%BD%BF%E7%94%A8/wireshark%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="AMY&#39;s BLOG">
+<meta property="og:description" content="工具简述1、wireshark工具的使用Wireshark是一款抓包工具，能获取HTTP，也能获取HTTPS，但是不能解密HTTPS。 打开wireshark，选择要监听的端口，然后开始抓包。  抓包界面如下图所示，包的详细信息里对应OSI七层模型：  在嗅探包的时候会有很多各种各样的包，所以我们可以通过设置过滤来查看我们想要的包。 1.1地址过滤  指定源ip：ip.src &#x3D;&#x3D; IP 指定目的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101043246.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101043217.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101044507.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101044297.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101044300.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101045564.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101045165.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101045287.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101045532.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101046667.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101046118.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101046772.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101042618.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101047046.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101047041.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101048763.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101048287.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101048180.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101048842.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101049925.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101049651.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101049085.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101050657.png">
+<meta property="article:published_time" content="2022-04-03T03:00:53.000Z">
+<meta property="article:modified_time" content="2022-04-10T03:02:19.540Z">
+<meta property="article:author" content="CAIMI">
+<meta property="article:tag" content="tools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101043246.png">
+  
+    <link rel="alternate" href="/atom.xml" title="AMY&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">AMY&#39;s BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Amy-CCC098.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-wireshark的使用/wireshark的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/04/03/wireshark%E7%9A%84%E4%BD%BF%E7%94%A8/wireshark%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2022-04-03T03:00:53.000Z" itemprop="datePublished">2022-04-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      wireshark的使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+        <h2 id="工具简述"><a href="#工具简述" class="headerlink" title="工具简述"></a>工具简述</h2><h3 id="1、wireshark工具的使用"><a href="#1、wireshark工具的使用" class="headerlink" title="1、wireshark工具的使用"></a>1、wireshark工具的使用</h3><p>Wireshark是一款抓包工具，能获取HTTP，也能获取HTTPS，但是不能解密HTTPS。</p>
+<p>打开wireshark，选择要监听的端口，然后开始抓包。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101043246.png" alt="image-20220410104326200"></p>
+<p>抓包界面如下图所示，包的详细信息里对应OSI七层模型：</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101043217.png" alt="image-20220410104344165"></p>
+<p>在嗅探包的时候会有很多各种各样的包，所以我们可以通过设置过滤来查看我们想要的包。</p>
+<p>1.1地址过滤</p>
+<ul>
+<li>指定源ip：ip.src == IP</li>
+<li>指定目的ip：ip.dst == IP</li>
+<li>与某ip的交互：ip.addr == IP</li>
+<li>指定的源ip或指定的目的ip: ip.src == IP or ip.dst == IP</li>
+<li>指定的源ip并且指定的目的ip: ip.src == IP and ip.dst == IP</li>
+</ul>
+<p>1.2端口过滤</p>
+<ul>
+<li>可以指定协议是tcp还是udp，然后用srcport，dstport，port来确定要指定的是源端口还是目的端口。</li>
+</ul>
+<p>1.3协议过滤</p>
+<ul>
+<li>协议有tcp，udp，arp，icmp，http，smtp，ftp，dns，ssl等，要指定某个协议可以在过滤栏输入协议名称。不要某个协议过滤栏输入!协议名称。</li>
+</ul>
+<p>1.4 get/post过滤</p>
+<ul>
+<li>http.request.method == GET</li>
+<li>http.request.method == POST</li>
+</ul>
+<h3 id="2、Wireshark抓包原理"><a href="#2、Wireshark抓包原理" class="headerlink" title="2、Wireshark抓包原理"></a>2、Wireshark抓包原理</h3><p>​    wireshark常见抓到包的类型有:ARP协议、ICMP协议、TCP协议、UDP协议、DNS协议、HTTP协议，在本机环境下它抓包抓取的是我们电脑的网卡进出的流量。Wireshark监听一个端口，比如8888，在测试机上连接同一个局域网，配置网络代理，指向该主机的8888端口，这样一来测试机的所有网络通信都会被转发到PC的8888端口，进而被wireshark捕获，然后就可以对数据包进行分析。</p>
+<h2 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h2><h3 id="使用wireshark进行一次网站访问"><a href="#使用wireshark进行一次网站访问" class="headerlink" title="使用wireshark进行一次网站访问"></a>使用wireshark进行一次网站访问</h3><ol>
+<li><p>命令行输入nslookup，再输入网址cclab.ujs.edu.cn，发现其ip为218.3.94.83，所以在抓包过程中可以用ip.addr==218.3.94.83进行过滤</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101044507.png" alt="image-20220410104419456"></p>
+</li>
+<li><p>访问网站cclab.ujs.edu.cn</p>
+</li>
+<li><p>用wireshark对数据包进行查看</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101044297.png" alt="image-20220410104436246"></p>
+</li>
+</ol>
+<h3 id="对整个网站访问过程抓取的数据包进行分析"><a href="#对整个网站访问过程抓取的数据包进行分析" class="headerlink" title="对整个网站访问过程抓取的数据包进行分析"></a>对整个网站访问过程抓取的数据包进行分析</h3><p><strong>a.TCP连接和断开三次握手</strong></p>
+<p>​    下图是wireshark抓取到的访问cclab.ujs.edu.cn时三次握手的过程</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101044300.png" alt="image-20220410104455266"></p>
+<ul>
+<li><p>第一次握手，客户端发送一个TCP，标志位SYN为１，序号seq=0,36110-&gt;80代表客户端请求连接。</p>
+<p>本机地址192.168.0.103向目的地址218.3.94.83发送请求。</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101045564.png" alt="image-20220410104510530"></p>
+<ul>
+<li>第二次握手是服务器向客户端返回一个数据包，80-&gt;36110，序列号为０，确认序号为１。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101045165.png" alt="image-20220410104530124"></p>
+<ul>
+<li>第三次握手是在第五行，第三第四行是进行了一个重发，客户端收到服务器发来的包之后检查确认序号是否为正确，以及标志位是否为１。如果正确，客户端会向服务器端发送一个数据包，36110-&gt;80，发送的数据包中确认序列ack=1，发送序列seq=0。至此，一次三次握手，TCP连接建立完成。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101045287.png" alt="image-20220410104543251"> </p>
+<p><strong>b.七层数据分析</strong></p>
+<p>​    在封包详细信息处，从上至下分别为物理层、数据链路层、IP网络层、TCP传输层以及最后面的HTTP</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101045532.png" alt="image-20220410104559492"></p>
+<ul>
+<li>物理层中可以看到包到达的事件，与之前捕获的数据帧查理0.001174330s，和之前显示的数据帧差了0.001174330s，包的长度为393bytes。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101046667.png" alt="image-20220410104614625"></p>
+<ul>
+<li>数据链路层中可以看到本地的mac地址和目标的mac地址,其中type:IPv4是发送的数据包类型。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101046118.png" alt="image-20220410104629078"></p>
+<ul>
+<li>网络层中可以看到头部的长度为20bytes，以及源地址和目标地址的ip。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101046772.png" alt="image-20220410104647722"></p>
+<ul>
+<li>传输层中可以看到源端口和目标端口，报文长度，序列号，确认序号等，这里用的是TCP协议传输。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101042618.jpg" alt="img"></p>
+<ul>
+<li>http报文中可以看到访问该网页用的浏览器，语言，编码，访问网站的域名等。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101047046.png" alt="image-20220410104730965"></p>
+<p><strong>c.应用层HTTP流程协议分析</strong></p>
+<p>​    下图是应用层HTTP流程协议，这里用GET来向cclab.ijs.edu.cn请求资源，还可以看到客户端用的是linux x86_64，使用的浏览器是火狐。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101047041.png" alt="image-20220410104745983"></p>
+<p>​    下图是网站的应答包，由于cclab.ijs.edu.cn属于内网，因此返回503无法访问</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101048763.png" alt="image-20220410104801719"></p>
+<h3 id="3、打开https网站分析SSL握手情况"><a href="#3、打开https网站分析SSL握手情况" class="headerlink" title="3、打开https网站分析SSL握手情况"></a>3、打开https网站分析SSL握手情况</h3><p>a.命令行输入nslookup，再输入网站<a target="_blank" rel="noopener" href="http://www.alipay.com,发现其ip为203.209.255.247,所以在抓包过程中可以用ip.addr==203.209.255.247进行过滤/">www.alipay.com，发现其ip为203.209.255.247，所以在抓包过程中可以用ip.addr==203.209.255.247进行过滤</a></p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101048287.png" alt="image-20220410104815223"></p>
+<p>b.打开网站，用wireshark进行抓包</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101048180.png" alt="image-20220410104827095"></p>
+<p>c.分析SSL握手情况</p>
+<p>Https实现安全通信就是再http和TCP之间加入SSL协议层，SSL协议中客户机和服务器会进行四次握手。</p>
+<ul>
+<li>第一次握手客户端发送给服务器端。客户端发送Client Hello的消息，其报文内容有：客户端TLS版本号（TLS 1.2）、长度、生成的随机数、加密套件列表（Cipher Suites）等。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101048842.png" alt="image-20220410104852788"></p>
+<ul>
+<li>第二次握手服务器端发给客户端。服务端收到客户端的Client Hello的消息，回复Server Hello。其报文内容有：服务器确认客户端TLS版本号（TLS 1.2）、长度、服务器生成的随机数、服务器从客户机加密套件列表中选出一个最合适的加密组合等，这里选择的是TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f)，表示用128位以GCM作为分组模式的AES进行加密，用RSA进行身份认证，ECDHE作为密码交换算法，SHA256作为摘要算法。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101049925.png" alt="image-20220410104907868"></p>
+<p>​    之后，服务器会发送一个认证信息，里面包括CA给服务器颁发的公钥、CA机构的签名等。以及发送一个服务器密钥交换消息以及通知客户端第二次握手中服务器的所有消息都已发送完毕的消息。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101049651.png" alt="image-20220410104918610"></p>
+<ul>
+<li><p>第三次握手时，客户端发给服务器端。客户端在收到服务器返回的 Server Hello 和 Certificate 消息后，使用公钥对证书进行解密，得到数据原文及摘要值1，然后客户端使用与CA相同的摘要算法对数据原文进行计算得到摘要值2，比较摘要值1与摘要值2，若完全相同则说明证书合法且未被其他人篡改，从而拿到服务器的RSA公钥，并发送客户端密钥交换消息。从抓到的数据包中我们还可以看到diffie-hellman密钥交换协议的公钥为:f479d1a88d6d73018dba2b2b69ae2a8d2c71a345284b08ea57df544aae843a6e。</p>
+<p>然后发送信息Change Cipher Spec，将对称密钥发送给服务器，并通知服务器开始使用对称加密的方式进行通信。</p>
+<p>最后，客户端发送Encrypted Handshake Message 消息，将之前发送的所有数据做成摘要，使用对称密钥加密，供服务器验证之前握手过程中的数据是否被其他人篡改。</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101049085.png" alt="image-20220410104950042"></p>
+<ul>
+<li><p>第四次握手是服务器端发给客户端。服务器端先向客户端发送一个New Session Ticket的消息。然后，再用RSA私钥对Client Key Exchange消息解密，得到客户端的随机数，并计算对称密钥，将计算后的结果通过Change Cipher Spec消息返回给客户端。</p>
+<p>最后，服务器再发送一个Encrypted Handshake Message消息，将握手过程中的对称密钥加密后发给客户端。TLS四次握手完毕。</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/202204101050657.png" alt="image-20220410105000608"></p>
+
+      
+     
+   </div>
+    <footer class="article-footer">
+      <a data-url="https://amy-ccc098.github.io/2022/04/03/wireshark%E7%9A%84%E4%BD%BF%E7%94%A8/wireshark%E7%9A%84%E4%BD%BF%E7%94%A8/" data-id="cl1spahcc000b08vs23hd3dxv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tools/" rel="tag">tools</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/19/python%E5%85%A5%E9%97%A8/python%E5%85%A5%E9%97%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python入门</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cisp/" rel="tag">cisp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memo/" rel="tag">memo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/study/" rel="tag">study</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/" rel="tag">tools</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/cisp/" style="font-size: 10px;">cisp</a> <a href="/tags/memo/" style="font-size: 13.33px;">memo</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/study/" style="font-size: 20px;">study</a> <a href="/tags/tools/" style="font-size: 16.67px;">tools</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/03/wireshark%E7%9A%84%E4%BD%BF%E7%94%A8/wireshark%E7%9A%84%E4%BD%BF%E7%94%A8/">wireshark的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/19/python%E5%85%A5%E9%97%A8/python%E5%85%A5%E9%97%A8/">python入门</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/16/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B1%87%E6%80%BB%E3%80%90%E9%98%B2%E5%BF%98%E3%80%91/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B1%87%E6%80%BB%E3%80%90%E9%98%B2%E5%BF%98%E3%80%91/">Windows命令行汇总【防忘】</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/21/%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E6%96%B9%E6%B3%95/%E6%96%87%E4%BB%B6%E6%81%A2%E5%A4%8D%E6%96%B9%E6%B3%95/">文件恢复方法</a>
+          </li>
+        
+          <li>
+            <a href="/2022/02/20/owasp-top-10/owasp-top-10/">owasp top 10</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 CAIMI<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":250,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
