@@ -10,13 +10,13 @@
   <meta name="description" content="后门开发编程实现远程cmdshell后门​    后门就是绕过安全控制而获取对程序或系统访问权的方法。后门具有隐蔽性，可以实现隐藏在用户系统中向外发送信息，它本身也具有一定权限,以便通过远程机器对被攻击机进行控制。同时，后门可以是攻击者对被攻击机长期维持权限，攻击者在之后可以很容易的再次秘密进入或者控制系统。 （1）ipconfig查看攻击机的ip地址：    （2）编写代码，将查到的ip填入到代">
 <meta property="og:type" content="article">
 <meta property="og:title" content="后门开发">
-<meta property="og:url" content="https://amy-ccc098.github.io/2022/04/25/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:url" content="https://amy-ccc098.github.io/2022/04/15/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/index.html">
 <meta property="og:site_name" content="AMY&#39;s BLOG">
 <meta property="og:description" content="后门开发编程实现远程cmdshell后门​    后门就是绕过安全控制而获取对程序或系统访问权的方法。后门具有隐蔽性，可以实现隐藏在用户系统中向外发送信息，它本身也具有一定权限,以便通过远程机器对被攻击机进行控制。同时，后门可以是攻击者对被攻击机长期维持权限，攻击者在之后可以很容易的再次秘密进入或者控制系统。 （1）ipconfig查看攻击机的ip地址：    （2）编写代码，将查到的ip填入到代">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://amy-ccc098.github.io/2022/04/25/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/Users/艾小米/AppData/Local/Temp/ksohtml/wps5F.tmp.jpg">
+<meta property="og:image" content="https://amy-ccc098.github.io/2022/04/15/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/Users/艾小米/AppData/Local/Temp/ksohtml/wps5F.tmp.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps568B.tmp.jpg">
-<meta property="og:image" content="https://amy-ccc098.github.io/2022/04/25/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/Users/艾小米/AppData/Local/Temp/ksohtml/wps61.tmp.jpg">
+<meta property="og:image" content="https://amy-ccc098.github.io/2022/04/15/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/Users/艾小米/AppData/Local/Temp/ksohtml/wps61.tmp.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps62.tmp.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps63.tmp.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps64.tmp.jpg">
@@ -24,12 +24,12 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7A.tmp.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wpsFDD3.tmp.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7C.tmp.jpg">
-<meta property="article:published_time" content="2022-04-25T01:27:17.000Z">
-<meta property="article:modified_time" content="2022-04-25T01:39:00.821Z">
+<meta property="article:published_time" content="2022-04-15T01:27:17.000Z">
+<meta property="article:modified_time" content="2022-04-25T01:45:37.288Z">
 <meta property="article:author" content="CAIMI">
 <meta property="article:tag" content="工控">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://amy-ccc098.github.io/2022/04/25/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/Users/艾小米/AppData/Local/Temp/ksohtml/wps5F.tmp.jpg">
+<meta name="twitter:image" content="https://amy-ccc098.github.io/2022/04/15/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/Users/艾小米/AppData/Local/Temp/ksohtml/wps5F.tmp.jpg">
   
     <link rel="alternate" href="/atom.xml" title="AMY&#39;s BLOG" type="application/atom+xml">
   
@@ -80,8 +80,8 @@
       <div class="outer">
         <section id="main"><article id="post-后门开发/后门开发" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2022/04/25/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/" class="article-date">
-  <time datetime="2022-04-25T01:27:17.000Z" itemprop="datePublished">2022-04-25</time>
+    <a href="/2022/04/15/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/" class="article-date">
+  <time datetime="2022-04-15T01:27:17.000Z" itemprop="datePublished">2022-04-15</time>
 </a>
     
   </div>
@@ -104,12 +104,12 @@
         
         <h2 id="后门开发"><a href="#后门开发" class="headerlink" title="后门开发"></a>后门开发</h2><h3 id="编程实现远程cmdshell后门"><a href="#编程实现远程cmdshell后门" class="headerlink" title="编程实现远程cmdshell后门"></a>编程实现远程cmdshell后门</h3><p>​    后门就是绕过安全控制而获取对程序或系统访问权的方法。后门具有隐蔽性，可以实现隐藏在用户系统中向外发送信息，它本身也具有一定权限,以便通过远程机器对被攻击机进行控制。同时，后门可以是攻击者对被攻击机长期维持权限，攻击者在之后可以很容易的再次秘密进入或者控制系统。</p>
 <p>（1）ipconfig查看攻击机的ip地址：</p>
-<img src="/2022/04/25/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/Users\艾小米\AppData\Local\Temp\ksohtml\wps5F.tmp.jpg" alt="img" style="zoom: 80%;"> 
+<img src="/2022/04/15/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/Users\艾小米\AppData\Local\Temp\ksohtml\wps5F.tmp.jpg" alt="img" style="zoom: 80%;"> 
 
 <p>（2）编写代码，将查到的ip填入到代码inet_adder()的括号内作为攻击机，监听端口为4444：</p>
 <p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps568B.tmp.jpg" alt="img"></p>
 <p>（3）运行nc.exe，输入如下：</p>
-<img src="/2022/04/25/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/Users\艾小米\AppData\Local\Temp\ksohtml\wps61.tmp.jpg" alt="img" style="zoom:80%;"> 
+<img src="/2022/04/15/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/Users\艾小米\AppData\Local\Temp\ksohtml\wps61.tmp.jpg" alt="img" style="zoom:80%;"> 
 
 <p>（4）在虚拟机中运行代码生成的cmdshell程序：</p>
 <p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps62.tmp.jpg" alt="img"> </p>
@@ -129,7 +129,7 @@
      
    </div>
     <footer class="article-footer">
-      <a data-url="https://amy-ccc098.github.io/2022/04/25/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/" data-id="cl2e1wzwj000v6cvsdava0ax1" class="article-share-link">Share</a>
+      <a data-url="https://amy-ccc098.github.io/2022/04/15/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/" data-id="cl2e1wzwj000v6cvsdava0ax1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E6%8E%A7/" rel="tag">工控</a></li></ul>
@@ -194,7 +194,7 @@
       <ul>
         
           <li>
-            <a href="/2022/04/25/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/">后门开发</a>
+            <a href="/2022/04/15/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/">后门开发</a>
           </li>
         
           <li>
