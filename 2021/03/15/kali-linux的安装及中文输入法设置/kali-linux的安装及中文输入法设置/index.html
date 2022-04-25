@@ -7,17 +7,17 @@
   
   <title>kali linux的安装及中文输入法设置 | AMY&#39;s BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="渗透必备——vmware安装kali linux及设置中文输入法 kali linux是基于Debian的Linux发行版，里面预装了很多渗透测试的必备软件，比如namp,burpsuite,wireshark等。同时还有基于ARM架构的镜像，可以安装在硬盘、usb驱动器、树莓派、VMware等，这里主要介绍将kali linux安装至VMware的步骤。 安装 kali linux  kali官">
+  <meta name="description" content="kali linux是基于Debian的Linux发行版，里面预装了很多渗透测试的必备软件，比如namp,burpsuite,wireshark等。同时还有基于ARM架构的镜像，可以安装在硬盘、usb驱动器、树莓派、VMware等，这里主要介绍将kali linux安装至VMware的步骤。 安装 kali linux kali官网：https:&#x2F;&#x2F;www.kali.org 找到对应版本的种子文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kali linux的安装及中文输入法设置">
 <meta property="og:url" content="https://amy-ccc098.github.io/2021/03/15/kali-linux%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E8%AE%BE%E7%BD%AE/kali-linux%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E8%AE%BE%E7%BD%AE/index.html">
 <meta property="og:site_name" content="AMY&#39;s BLOG">
-<meta property="og:description" content="渗透必备——vmware安装kali linux及设置中文输入法 kali linux是基于Debian的Linux发行版，里面预装了很多渗透测试的必备软件，比如namp,burpsuite,wireshark等。同时还有基于ARM架构的镜像，可以安装在硬盘、usb驱动器、树莓派、VMware等，这里主要介绍将kali linux安装至VMware的步骤。 安装 kali linux  kali官">
+<meta property="og:description" content="kali linux是基于Debian的Linux发行版，里面预装了很多渗透测试的必备软件，比如namp,burpsuite,wireshark等。同时还有基于ARM架构的镜像，可以安装在硬盘、usb驱动器、树莓派、VMware等，这里主要介绍将kali linux安装至VMware的步骤。 安装 kali linux kali官网：https:&#x2F;&#x2F;www.kali.org 找到对应版本的种子文件">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/image-20220216161607621.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/image-20220216160959622.png">
 <meta property="article:published_time" content="2021-03-15T05:19:49.000Z">
-<meta property="article:modified_time" content="2022-03-16T07:13:55.167Z">
+<meta property="article:modified_time" content="2022-04-25T02:18:01.553Z">
 <meta property="article:author" content="CAIMI">
 <meta property="article:tag" content="study">
 <meta name="twitter:card" content="summary">
@@ -94,10 +94,8 @@
       
         
         
-        <p>渗透必备——vmware安装<code>kali linux</code>及设置中文输入法</p>
-<p><code>kali linux</code>是基于Debian的Linux发行版，里面预装了很多渗透测试的必备软件，比如namp,burpsuite,wireshark等。同时还有基于ARM架构的镜像，可以安装在硬盘、usb驱动器、树莓派、VMware等，这里主要介绍将<code>kali linux</code>安装至VMware的步骤。</p>
-<p>安装 kali linux</p>
-<ol>
+        <p><code>kali linux</code>是基于Debian的Linux发行版，里面预装了很多渗透测试的必备软件，比如namp,burpsuite,wireshark等。同时还有基于ARM架构的镜像，可以安装在硬盘、usb驱动器、树莓派、VMware等，这里主要介绍将<code>kali linux</code>安装至VMware的步骤。</p>
+<h2 id="安装-kali-linux"><a href="#安装-kali-linux" class="headerlink" title="安装 kali linux"></a>安装 kali linux</h2><ol>
 <li>kali官网：<a target="_blank" rel="noopener" href="https://www.kali.org/">https://www.kali.org</a></li>
 <li>找到对应版本的种子文件，并下载。</li>
 <li>打开VMware，创建一个新的虚拟机，在映像文件处选择刚刚下载的.iso文件。</li>
@@ -122,8 +120,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
 
 <hr>
-<p>设置中文输入法</p>
-<p>安装完kali后会发现输入法只能使用英文，所以需要我们自行安装中文输入法</p>
+<h2 id="设置中文输入法"><a href="#设置中文输入法" class="headerlink" title="设置中文输入法"></a>设置中文输入法</h2><p>安装完kali后会发现输入法只能使用英文，所以需要我们自行安装中文输入法</p>
 <ol>
 <li><p><code>su root</code>获取管理员权限</p>
 </li>
@@ -144,7 +141,7 @@
      
    </div>
     <footer class="article-footer">
-      <a data-url="https://amy-ccc098.github.io/2021/03/15/kali-linux%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E8%AE%BE%E7%BD%AE/kali-linux%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E8%AE%BE%E7%BD%AE/" data-id="cl2e337i50009s8vseuw4342a" class="article-share-link">Share</a>
+      <a data-url="https://amy-ccc098.github.io/2021/03/15/kali-linux%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E8%AE%BE%E7%BD%AE/kali-linux%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%B8%AD%E6%96%87%E8%BE%93%E5%85%A5%E6%B3%95%E8%AE%BE%E7%BD%AE/" data-id="cl2e3n2sp000azsvs24gifn9n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/" rel="tag">study</a></li></ul>
